@@ -1,17 +1,16 @@
 .box {
-	height: 50px;
-	width: 200px;
-	font-family: "serif";
-	font-weight: 700;
-	font-size: large;
-	background-color:rgb(199, 206, 201);
+	height: 80px;
+	width: 300px;
+	font-family: cursive;
+	font-weight: bold;
+	font-size: x-large;
+	background-color:rgb(233, 240, 235);
 }
 
 .div {
 	position: absolute;
-	top: 80%;
-	bottom: 50%;
-	left: 40%;
+	top: 70%;
+	left: 42%;
 	margin: 0 auto;
 }
 
@@ -19,9 +18,22 @@
 	position: absolute;
 	left: 20%;
 	color: rgb(65, 63, 61);
-	margin: 5 auto;
+	/* margin: 5 auto; */
+}
+.log-out{
+	position: relative;
+	left: 700px;
 }
 
+.gif {
+	height: 550px;
+	width: 650px;
+	position: relative;
+	left: 30%;
+	transform: translateX(50%);
+	/* bottom: 70%; */
+	 transform: translateY(10%);
+}
 
 .logo{
 	height: 50px;

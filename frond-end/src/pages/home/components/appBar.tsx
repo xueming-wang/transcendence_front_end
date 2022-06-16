@@ -56,8 +56,8 @@ export const CommonBox = () => {
 					</Link>
 				</Button>
 
-				<Button key='logout'onClick={logout}>
-					<LogoutIcon  fontSize="medium"/>
+				<Button key='logout'className='log-out' onClick={logout}>
+					<LogoutIcon fontSize="large"/> logout
 				</Button>
 			</Box>
 			)
@@ -80,7 +80,7 @@ export const ResponsiveAppBar = () => {
     <AppBar   color='transparent' position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters >
-			<img alt="42"  className='logo' src="https://elearning.intra.42.fr/assets/42_logo-7dfc9110a5319a308863b96bda33cea995046d1731cebb735e41b16255106c12.svg" />
+			<img alt="42"  className='logo' src="https://transcendence.nforay.dev/img/42logo.ec2e6c25.svg" />
           <Typography 
             variant="h6"
             noWrap

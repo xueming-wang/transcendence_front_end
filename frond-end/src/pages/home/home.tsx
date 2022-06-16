@@ -4,6 +4,7 @@ import {ResponsiveAppBar} from './components/appBar'
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from './route';
 
+
 const HanldleButton = () => {
 	const navigate = useNavigate();
 	const [isLogin, setIsLogin] = useContext(MyContext);
@@ -21,8 +22,12 @@ const HanldleButton = () => {
 }
 
 const Home =() => {
+
+let loadingGif = require("../../giphy.gif");
+
   return <div>
       <ResponsiveAppBar />
+	  	<img src={loadingGif} className='gif' />
       <HanldleButton />
     </div>
 }
