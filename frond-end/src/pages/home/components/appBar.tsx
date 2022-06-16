@@ -10,10 +10,13 @@ import SvgIcon from '@mui/material/SvgIcon';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ForumSharpIcon from '@mui/icons-material/ForumSharp';
 import SportsHandballRoundedIcon from '@mui/icons-material/SportsHandballRounded';
+import { MyContext } from '../route';
+import { useNavigate } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
-const pages = ['Home', 'profile', 'jeu', 'chat'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Home', 'profile', 'jeu', 'chat', 'logout'];
+
 
 const HomeIcon = (props:any) => {
 	return (
@@ -24,37 +27,55 @@ const HomeIcon = (props:any) => {
 }
 
 export const CommonBox = () => {
-	return (
-	<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-		<Button key='home' >
-			<Link className='nav' to={`/${pages[0]}`}> 
-				<HomeIcon fontSize="large"/>
-			</Link>
-		</Button>
+	const [isLogin, setIsLogin] = React.useContext(MyContext)
+	const navigate = useNavigate();
+	
+	const logout = () => {  //logout 处理状态 变成false 转向首页
+		setIsLogin(false);
+		navigate('/');
+	}
 
-		<Button key='profile' >
-			<Link className='nav' to={`/${pages[1]}`}> 
-				<AssignmentIndIcon fontSize="large"/>
-			</Link>
-		</Button>
+	if (isLogin) {
+		return (
+			<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+				<Button key='profile' >
+					<Link className='nav' to={`/${pages[1]}`}> 
+						<AssignmentIndIcon fontSize="large"/>
+					</Link>
+				</Button>
+		
+				<Button key='jeu' >
+					<Link className='nav' to={`/${pages[2]}`}> 
+						<SportsHandballRoundedIcon fontSize="large" />
+					</Link>
+				</Button>
+		
+				<Button key='chat' >
+					<Link className='nav' to={`/${pages[3]}`}> 
+						<ForumSharpIcon fontSize="large"/>
+					</Link>
+				</Button>
 
-		<Button key='jeu' >
-			<Link className='nav' to={`/${pages[2]}`}> 
-				<SportsHandballRoundedIcon fontSize="large" />
-			</Link>
-		</Button>
-
-		<Button key='chat' >
-			<Link className='nav' to={`/${pages[3]}`}> 
-				<ForumSharpIcon fontSize="large"/>
-			</Link>
-		</Button>
-	</Box>
-	)
+				<Button key='logout'onClick={logout}>
+					<LogoutIcon  fontSize="medium"/>
+				</Button>
+			</Box>
+			)
+	}
+	else {
+		return (
+			<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+				<Button key='home' >
+					<Link className='nav' to={`/${pages[0]}`}> 
+						<HomeIcon fontSize="large"/>
+					</Link>
+				</Button>
+			</Box>
+			)
+	}
 }
 
 export const ResponsiveAppBar = () => {
-
   return (
     <AppBar   color='transparent' position="static">
       <Container maxWidth="xl">

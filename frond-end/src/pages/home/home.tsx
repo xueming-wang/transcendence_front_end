@@ -1,16 +1,29 @@
-import{ useState } from 'react'
-import Button  from "./components/button"
+import{ useState, useContext } from 'react'
 import './home.css'
-import DeleteIcon from '@mui/icons-material/Delete';
 import {ResponsiveAppBar} from './components/appBar'
-import App from './route'
+import { useNavigate } from 'react-router-dom';
+import { MyContext } from './route';
 
+const HanldleButton = () => {
+	const navigate = useNavigate();
+	const [isLogin, setIsLogin] = useContext(MyContext);
 
+	const handleLoginClick = () => {                     //按login 时候处理
+		setIsLogin(true);
+    	navigate('/signup');
+	}
+
+	return (
+		<div className='div'>
+			{<button className="box" onClick={handleLoginClick}>Login with 42</button>}
+		</div>
+	)
+}
 
 const Home =() => {
   return <div>
       <ResponsiveAppBar />
-      <Button />
+      <HanldleButton />
     </div>
 }
 export default Home
