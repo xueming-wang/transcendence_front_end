@@ -10,7 +10,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ForumSharpIcon from '@mui/icons-material/ForumSharp';
 import SportsHandballRoundedIcon from '@mui/icons-material/SportsHandballRounded';
-import { MyContext } from '../route';
+import { MyContext } from '../../common/route';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 

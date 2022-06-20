@@ -1,3 +1,5 @@
+
+
 .box {
 	height: 80px;
 	width: 300px;
@@ -22,7 +24,7 @@
 }
 .log-out{
 	position: relative;
-	left: 700px;
+	left: 600px;
 }
 
 .gif {
@@ -39,4 +41,14 @@
 	height: 50px;
 	width: 100px;
 }
+
+/*css for frofil*/
+.profil {
+	height: 450px;
+	width: 700px;
+	left: 25%;
+	position: relative;
+	transform: translateX(50%);
+	transform: translateY(10%);
+} 
 

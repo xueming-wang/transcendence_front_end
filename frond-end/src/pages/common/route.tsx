@@ -1,12 +1,11 @@
-import './home.css';
+import './common.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from './home'
+import Home from '../home/home'
 import Profile from '../profil/profil';
 import Jeu from '../jeu/jeu';
 import Chat from '../chat/char';
-import SignUp from './components/signup';
+import SignUp from '../home/components/signup';
 import React,{useContext, useEffect, useState}  from 'react';
-
 
 ////创建context
 export const MyContext = React.createContext<any>(null);
@@ -45,15 +44,16 @@ const App = () => {
 	}, [])
 
 	return (
-	<MyContext.Provider value={[isLogin, setIsLogin]}>
-		<BrowserRouter>
-			<RouteStat />
-		</BrowserRouter>
-	  </MyContext.Provider>
+	<div>
+		<MyContext.Provider value={[isLogin, setIsLogin]}>
+			<BrowserRouter>
+				<RouteStat />
+			</BrowserRouter>
+		</MyContext.Provider>
+		
+	</div>
 	)
 }
-
-
 
 
 export default App;

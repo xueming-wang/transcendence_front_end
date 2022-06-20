@@ -1,8 +1,9 @@
 import{ useState, useContext } from 'react'
-import './home.css'
+import '../common/common.css'
 import {ResponsiveAppBar} from './components/appBar'
 import { useNavigate } from 'react-router-dom';
-import { MyContext } from './route';
+import { MyContext } from '../common/route';
+import Background from '../common/pingpong.png';
 
 
 const HanldleButton = () => {
@@ -21,15 +22,21 @@ const HanldleButton = () => {
 	)
 }
 
+var sectionStyle = {
+	width: "100%",
+	height: "800px",
+  // makesure here is String确保这里是一个字符串，以下是es6写法
+	backgroundImage: `url(${Background})` 
+};
+  
+
 const Home =() => {
 
-let loadingGif = require("../../giphy.gif");
-
-  return <div>
-      <ResponsiveAppBar />
-	  	<img src={loadingGif} className='gif' />
-      <HanldleButton />
-    </div>
+	return <div style={sectionStyle} >
+			<ResponsiveAppBar />
+				{/* <img src={loadingGif} className='gif' /> */}
+			<HanldleButton />
+		</div>
 }
 export default Home
 
