@@ -3,7 +3,8 @@ import '../common/common.css'
 import {ResponsiveAppBar} from './components/appBar'
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../common/route';
-import Background from '../common/pingpong.png';
+// import Background from '../common/pingpong.png';
+import Background from '../common/pp2.gif';
 
 
 const HanldleButton = () => {
@@ -22,9 +23,10 @@ const HanldleButton = () => {
 	)
 }
 
-var sectionStyle = {
+let sectionStyle = {
 	width: "100%",
 	height: "800px",
+	repeat:'no-repeat',
   // makesure here is String确保这里是一个字符串，以下是es6写法
 	backgroundImage: `url(${Background})` 
 };

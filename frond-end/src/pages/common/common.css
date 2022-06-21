@@ -42,13 +42,10 @@
 	width: 100px;
 }
 
-/*css for frofil*/
-.profil {
-	height: 450px;
-	width: 700px;
-	left: 25%;
-	position: relative;
-	transform: translateX(50%);
-	transform: translateY(10%);
-} 
+/*css for signup*/
+
+.signup {
+	height: 40px;
+	width: 100%;
+}
 
