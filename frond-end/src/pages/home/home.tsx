@@ -1,66 +1,50 @@
-import{ useState, useContext } from 'react'
-import '../common/common.css'
-import {ResponsiveAppBar} from './components/appBar'
-import { useNavigate } from 'react-router-dom';
-import { MyContext } from '../common/route';
-// import Background from '../common/pingpong.png';
-import Background from '../common/pp2.gif';
-
+import { useState, useContext } from "react";
+import "../common/common.css";
+import { ResponsiveAppBar } from "./components/appBar";
+import { useNavigate } from "react-router-dom";
+import { MyContext } from "../common/route";
+import Edit from "../common/pp2.gif";
 
 const HanldleButton = () => {
-	const navigate = useNavigate();
-	const [isLogin, setIsLogin] = useContext(MyContext);
+  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useContext(MyContext);
 
-	const handleLoginClick = () => {                     //按login 时候处理
-		setIsLogin(true);
-    	navigate('/signup');
-	}
+  const handleLoginClick = () => {
+    //按login 时候处理
+    setIsLogin(true);
+    navigate("/signup");
+  };
 
-	return (
-		<div className='div'>
-			{<button className="box" onClick={handleLoginClick}>Login with 42</button>}
-		</div>
-	)
-}
+  return (
+    <div className="div">
+      {
+        <button className="box" onClick={handleLoginClick}>
+          Login with 42
+        </button>
+      }
+    </div>
+  );
+};
 
 let sectionStyle = {
-	width: "100%",
-	height: "800px",
-	repeat:'no-repeat',
-  // makesure here is String确保这里是一个字符串，以下是es6写法
-	backgroundImage: `url(${Background})` 
+  backgroundImage: `url(${Edit})`,
 };
-  
 
-const Home =() => {
-
-	return <div style={sectionStyle} >
-			<ResponsiveAppBar />
-				{/* <img src={loadingGif} className='gif' /> */}
-			<HanldleButton />
-		</div>
-}
-export default Home
-
-//Handling clicks
-
-
-// //注销和登录按钮：
-// function LoginButton(props) {
-//   return (
-//     <button onClick={props.onClick}>
-//       Login
-//     </button>
-//   );
+// const data = {
+//   username: "xuexue"
 // }
 
-// function LogoutButton(props) {
-//   return (
-//     <button onClick={props.onClick}>
-//       Logout
-//     </button>
-//   );
-// }
-//<Button href="#text-buttons">Link</Button> 链接
+// JSON.stringify(data)
 
+const Home = () => {
+  return (
+    <div className="image" style={sectionStyle}>
+      <ResponsiveAppBar />
+      <HanldleButton />
+    </div>
+  );
+};
+
+
+export default Home;
 

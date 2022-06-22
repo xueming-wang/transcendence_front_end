@@ -32,12 +32,7 @@ export default function SignUp() {
           </Typography>
 
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <p>userName: </p>
-         <input type="text" className='signup'></input>
-         <p>ages: </p>
-         <input type="test" className='signup'></input>
-      
-            {/* <Grid container spacing={2}>
+            <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -50,7 +45,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-				  required
+				          required
                   fullWidth
                   name="ages"
                   label="ages"
@@ -59,7 +54,7 @@ export default function SignUp() {
                   autoComplete="ages"
                 />
               </Grid>
-            </Grid> */}
+            </Grid>
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>Sign Up</Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
@@ -72,17 +67,38 @@ export default function SignUp() {
   );
 }
 
-// export default function SignUp() {
-//    const signUp =() => {
 
-//    }
 
-//   return <div>
-//     <p>userName: </p>
-//     <input type="text"></input>
-//     <p>ages: </p>
-//     <input type="test"></input>
-//     <button onClick={signUp} ></button>
+// const theme = createTheme();
 
-//   </div>
+// const SignUp = () => {
+
+// return (
+//     <ThemeProvider theme={theme}>
+//       <Container component="main" maxWidth="xs">
+//         <CssBaseline />
+//         <Box
+//           sx={{ marginTop: 8,display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+//           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+//             <LockOutlinedIcon />
+//           </Avatar>
+//           <Typography component="h1" variant="h5">
+//             Sign up
+//           </Typography>
+
+//           <Box>
+//             <p>userName: </p>
+//             <input type="text" className='signup'></input>
+//             <p>ages: </p>
+//             <input type="test" className='signup'></input>
+//             <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} >Sign Up</Button>
+//           </Box>
+
+//         </Box>
+//       </Container>
+//     </ThemeProvider>
+//   );
 // }
+
+
+// export default SignUp
