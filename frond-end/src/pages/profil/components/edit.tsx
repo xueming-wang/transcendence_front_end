@@ -4,17 +4,61 @@ import EditIcon from '@mui/icons-material/ModeEdit';
 import { useNavigate } from "react-router-dom";
 import { ResponsiveAppBar } from "../../home/components/appBar"
 import Background from "../../common/pp2.gif";
+import Fab from '@mui/material/Fab';
+import Box from "@mui/material/Box";
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+
 
 let img = {
   backgroundImage: `url(${Background})`,
 };
 
 export const EditPage = () => {                  //修改页面
+
+	//GET 数据 
+
+ 
+	//put 更新数据 par name
+
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const data = new FormData(event.currentTarget);
+	 };
+
 	return (
 		<div className="image" style={img}>
 		 	<ResponsiveAppBar />
-			 page setting  
-		</div>
+			 <Box
+				className="profil"
+				sx={{
+					display: "flex",
+					flexDirection: { xs: "column", md: "row" },
+					alignItems: "center",
+					bgcolor: "background.paper",
+					overflow: 'hidden',
+					borderRadius: "20px",
+					boxShadow: 1,
+					fontWeight: "bold",
+				}}
+			  >
+			    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+					<Grid container spacing={20}>
+						<Grid item xs={20}>
+							<TextField
+							required
+							fullWidth
+							id="entre your New Name"
+							label="entre your New Name"
+							name="entre your New Name"
+							autoComplete="entre your New Name"
+							/>
+						</Grid>
+					</Grid>
+			 	</Box>
+			  </Box>
+		  </div>
 	)
 
 }
@@ -30,9 +74,9 @@ const Edit = () => {
 
 	return (
 		<div>
-			<Button color="inherit" variant="contained" onClick={handleSettings}>
-				<EditIcon></EditIcon>settings
-			</Button>
+			<Fab color="secondary" aria-label="edit" onClick={handleSettings} >
+				<EditIcon></EditIcon>
+			</Fab>
 		</div>
 	)
 }

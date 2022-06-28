@@ -6,36 +6,41 @@ import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit"
 
- //用fetch来通过id数字来获取数据
-async function fetchData() {  //括号里setuser
-  const res = await fetch(API_GET_DATA); 
-  const { data } = await res.json();  //获取数据信息
-  return data;   //setState(setUser) ;获取后端消息然后把新消息放进前段代码里显示出来
-}
+// const renderResponse = (res:any) => {
+//   if (!res) {
+//     console.log(res.status);
+//   }
+  
 
-//上传修改 数据通过API 给后端
-/* async function fetchSetData(data) {
-   await fetch(后端APIAPI, {
-     method:"PUT" //方式是 修改
-     headers {          //格式
-        'Content-type' : 'application/json'
-     },
-     body: JSON:.stringify( {data} )  //把文件转换为json格式放进去 传送
-  })
- }*/
+// }
+
+//GET 用fetch来通过id数字来获取数据
+ const queryParams = 'id=';  //user id 
+// const inputField = document.querySelector('#input');
+// const signUp = document.querySelector('#signUp');
+// const responseField = document.querySelector('#responseField');
+async function GetData() {  //括号里setuser
+  const endpoint = API_GET_DATA + queryParams //+id  
+  try {
+    const response = await fetch(endpoint) //???
+      if (response.ok) {
+        const jsonResponse = await response.json();  //获取数据信息
+        //jsonResponse
+
+
+      }
+  } catch (err) {
+    console.log(err);
+  } 
+}
 
  
 
 const ProfileBox = () => {
 
-  const handleWindow = () => {
-    //按login 时候处理
-  
-  };
-
-  useEffect( () => {
-    fetchData();  //如果有usestate 参数是setState
-  },[])
+  // useEffect( () => {
+  //   GetData();  //如果有usestate 参数是setState
+  // },[])
 
   let imagesGif = require("../../common/images.gif");
   return (

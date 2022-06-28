@@ -40,9 +40,9 @@ const RouteStat = () => {
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
 
-  useEffect(() => {
-    setIsLogin(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsLogin(true);
+  // }, []);
 
   return (
     <div>

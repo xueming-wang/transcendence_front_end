@@ -7,8 +7,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import Container, { containerClasses } from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import { API_HOST, API_GET_DATA } from "../../../global/constants"
 
 const theme = createTheme();
 
@@ -17,6 +19,33 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
   };
+
+
+  //POST to all de users
+  
+  //转换填进去的内容
+  const inputField = document.querySelector('#input');
+  const queryParams = '/users'; 
+  //发送
+  const PostData = async() => {
+    const endpoint = API_GET_DATA + queryParams //+id  
+    try {
+        const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          //???
+        },
+        body: JSON.stringify({inputField})
+        })
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          // Code to execute with jsonResponse
+        }
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
