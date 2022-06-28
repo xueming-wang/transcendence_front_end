@@ -16,15 +16,16 @@ let img = {
 
 export const EditPage = () => {                  //修改页面
 
-	//GET 数据 
-
- 
-	//put 更新数据 par name
-
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
+
+		//GET 数据
+		
+
+	
+		//put 更新数据 par name
 	 };
 
 	return (

@@ -6,42 +6,26 @@ import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit"
 
-// const renderResponse = (res:any) => {
-//   if (!res) {
-//     console.log(res.status);
-//   }
-  
 
-// }
+  //GET 用fetch来通过id数字来获取数据
+const queryParams = 'username=';  //
 
-//GET 用fetch来通过id数字来获取数据
- const queryParams = 'id=';  //user id 
-// const inputField = document.querySelector('#input');
-// const signUp = document.querySelector('#signUp');
-// const responseField = document.querySelector('#responseField');
 async function GetData() {  //括号里setuser
-  const endpoint = API_GET_DATA + queryParams //+id  
+  const endpoint = API_GET_DATA + queryParams // + username
   try {
     const response = await fetch(endpoint) //???
       if (response.ok) {
-        const jsonResponse = await response.json();  //获取数据信息
-        //jsonResponse
-
-
+        return await response.json();  //获取数据信息
       }
+      throw new Error('Request failed!');
   } catch (err) {
     console.log(err);
   } 
 }
 
- 
-
 const ProfileBox = () => {
 
-  // useEffect( () => {
-  //   GetData();  //如果有usestate 参数是setState
-  // },[])
-
+  const data:any = GetData();
   let imagesGif = require("../../common/images.gif");
   return (
     <Box
@@ -73,10 +57,10 @@ const ProfileBox = () => {
         }}
       >
         <Box component="span" sx={{ fontSize: 20 }}>
-          user: XX
+          user: {data.username}
         </Box>
         <Box component="span" sx={{ fontSize: 20, mt: 2 }}>
-          ages: X
+          ages: {data.ages}
         </Box>
 
         <Box
@@ -85,7 +69,7 @@ const ProfileBox = () => {
         >
           WINS: 10
         </Box>
-        <Box
+        <Box 
           component="span"
           sx={{ mt: 2, color: "warning.main", fontSize: 22 }}
         >

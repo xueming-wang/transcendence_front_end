@@ -15,37 +15,45 @@ import { API_HOST, API_GET_DATA } from "../../../global/constants"
 const theme = createTheme();
 
 export default function SignUp() {
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-  };
 
+    const dataInForm: any = {}
 
-  //POST to all de users
-  
+    dataInForm['username'] = data.get('username')
+    dataInForm['ages'] = data.get('ages')
+
+     //POST to all de users
+
   //转换填进去的内容
-  const inputField = document.querySelector('#input');
-  const queryParams = '/users'; 
-  //发送
-  const PostData = async() => {
-    const endpoint = API_GET_DATA + queryParams //+id  
-    try {
-        const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-          //???
-        },
-        body: JSON.stringify({inputField})
-        })
-        if (response.ok) {
-          const jsonResponse = await response.json();
-          // Code to execute with jsonResponse
-        }
-    } catch(err) {
-      console.log(err);
+    const queryParams = 'username='; 
+    const name = dataInForm['username'];
+
+    console.log(dataInForm);
+    //发送
+    const PostData = async() => {
+      const endpoint = API_GET_DATA + queryParams + name
+      console.log(endpoint);
+      try {
+          const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({dataInForm})
+          })
+          if (response.ok) {
+            const jsonResponse = await response.json();
+            // Code to execute with jsonResponse
+          }
+      } catch(err) {
+        console.log(err);
+      }
     }
-  }
+  
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,10 +74,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="UserName"
-                  label="UserNames"
-                  name="UserName"
-                  autoComplete="UserName"
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="Username"
                 />
               </Grid>
               <Grid item xs={12}>
