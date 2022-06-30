@@ -1,6 +1,73 @@
 export const API_HOST = "http://localhost:3000"
 export const API_GET_DATA = `${API_HOST}"/users?"`
 
+export  const GetData = async() => {  //括号里setuser
+  const queryParams = 'username='; 
+  const endpoint = API_GET_DATA + queryParams // + username
+  try {
+    const response = await fetch(endpoint) //???
+      if (response.ok) {
+        return await response.json();  //获取数据信息
+      }
+      throw new Error('Request failed!');
+  } catch (err) {
+    console.log(err);
+  } 
+}
+
+
+export const PostData = async(data:any) => {
+
+  const dataInForm: any = {}
+
+  const queryParams = 'username='; 
+  const name = dataInForm['username'];
+	const endpoint = API_GET_DATA + queryParams + name
+	console.log(endpoint);
+
+	try {
+		const response = await fetch(endpoint, {
+		method: "POST",
+		headers: {
+		  'Content-type': 'application/json',
+		},
+		body: JSON.stringify({data})
+		})
+		if (response.ok) {
+		  const jsonResponse = await response.json();
+		  // Code to execute with jsonResponse
+		}
+	} catch(err) {
+	  console.log(err);
+	}
+}
+
+export const PutData = async(data:any) => {
+
+  const dataInForm: any = {}
+
+  const queryParams = 'username='; 
+  const name = dataInForm['username'];
+	const endpoint = API_GET_DATA + queryParams + name
+	console.log(endpoint);
+
+	try {
+		const response = await fetch(endpoint, {
+		method: "PUT",
+		headers: {
+		  'Content-type': 'application/json',
+		},
+		body: JSON.stringify({data})
+		})
+    // if (response.ok) {
+    //   const jsonResponse = await response.json();
+    //   // Code to execute with jsonResponse
+    // }
+	} catch(err) {
+	  console.log(err);
+	}
+ }
+
 
 /*
 

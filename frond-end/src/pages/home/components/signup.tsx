@@ -11,8 +11,9 @@ import Container, { containerClasses } from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
-
+import { PostData } from '../../../global/constants';
 const theme = createTheme();
+
 
 export default function SignUp() {
 
@@ -24,35 +25,16 @@ export default function SignUp() {
 
     dataInForm['username'] = data.get('username')
     dataInForm['ages'] = data.get('ages')
-
+    dataInForm['wins'] = 0;
+    dataInForm['loses'] = 0;
+    dataInForm['score'] = 0;
      //POST to all de users
 
-  //转换填进去的内容
-    const queryParams = 'username='; 
-    const name = dataInForm['username'];
-
+    //转换填进去的内容
     console.log(dataInForm);
     //发送
-    const PostData = async() => {
-      const endpoint = API_GET_DATA + queryParams + name
-      console.log(endpoint);
-      try {
-          const response = await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({dataInForm})
-          })
-          if (response.ok) {
-            const jsonResponse = await response.json();
-            // Code to execute with jsonResponse
-          }
-      } catch(err) {
-        console.log(err);
-      }
-    }
-  
+    PostData( dataInForm);
+ 
   };
 
   return (
@@ -77,7 +59,7 @@ export default function SignUp() {
                   id="username"
                   label="Username"
                   name="username"
-                  autoComplete="Username"
+                  autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>

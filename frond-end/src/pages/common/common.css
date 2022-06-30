@@ -71,3 +71,10 @@
     -o-background-size: cover;
     background-position: center 0;
 }
+
+.valide {
+  position:fixed;
+  top: 20%;
+  left: 22%;
+  margin: 5 auto;
+}

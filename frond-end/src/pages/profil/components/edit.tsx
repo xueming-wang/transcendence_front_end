@@ -8,25 +8,40 @@ import Fab from '@mui/material/Fab';
 import Box from "@mui/material/Box";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import { DataGrid } from '@mui/x-data-grid';
+import { useState } from "react";
+import { API_HOST, API_GET_DATA } from "../../../global/constants"
+import { GetData, PostData, PutData } from "../../../global/constants";
 
+  
 
-let img = {
-  backgroundImage: `url(${Background})`,
-};
-
+//GET 数据
 export const EditPage = () => {                  //修改页面
 
+	let img = {
+		backgroundImage: `url(${Background})`,
+	};
+	const[editImg, setImg] = useState(false);
+
+	const data:any = GetData();
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-
-		//GET 数据
+		const newdata = new FormData(event.currentTarget);
 		
+		const dataToPost: any = {}
+		dataToPost['username'] = newdata.get('username')
 
-	
+		PutData(dataToPost);
 		//put 更新数据 par name
 	 };
+
+	 const handleClickImg = () => {
+		// 👇️ refers to the image element
+		// console.log(event.target);
+		console.log('Image clicked');
+	  };
+	  let imagesGif = require("../../common/images.gif");
 
 	return (
 		<div className="image" style={img}>
@@ -44,21 +59,37 @@ export const EditPage = () => {                  //修改页面
 					fontWeight: "bold",
 				}}
 			  >
-			    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-					<Grid container spacing={20}>
-						<Grid item xs={20}>
+				<Box component="form" noValidate onSubmit={handleSubmit}sx={{ mt: 3 }} > 
+					<button>
+					<img
+						src={imagesGif}
+						alt="photo"
+						onClick= {() => setImg(prevImg => !prevImg)}
+					
+					/>
+					</button>
+					<Box sx={{ fontSize: 30 }}>
+							user:11 {data.username}
+					</Box>
+				</Box>
+
+				{/* <Box  component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}> */}
+					<Grid container spacing={20} >
+						<Grid item xs={10} sx={{ mt: 3 }} >
 							<TextField
 							required
 							fullWidth
-							id="entre your New Name"
+							id="username"
 							label="entre your New Name"
-							name="entre your New Name"
-							autoComplete="entre your New Name"
-							/>
+							name="username"
+							autoComplete="username"
+							/> 
 						</Grid>
 					</Grid>
+					<Button  type="submit"  sx={{m: 2 , mt: 30}}>valide</Button>
+				{/* </Box> */}
+				
 			 	</Box>
-			  </Box>
 		  </div>
 	)
 

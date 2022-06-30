@@ -4,28 +4,31 @@ import { useEffect } from "react";
 import "../../common/common.css";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import Button from '@mui/material/Button';
-import BasicPopover from "../components/edit"
+import BasicPopover from "../components/edit";
+import { GetData } from "../../../global/constants";
 
 
   //GET 用fetch来通过id数字来获取数据
-const queryParams = 'username=';  //
+// const queryParams = 'username=';  //
 
-async function GetData() {  //括号里setuser
-  const endpoint = API_GET_DATA + queryParams // + username
-  try {
-    const response = await fetch(endpoint) //???
-      if (response.ok) {
-        return await response.json();  //获取数据信息
-      }
-      throw new Error('Request failed!');
-  } catch (err) {
-    console.log(err);
-  } 
-}
+// async function GetData() {  //括号里setuser
+//   const endpoint = API_GET_DATA + queryParams // + username
+//   try {
+//     const response = await fetch(endpoint) //???
+//       if (response.ok) {
+//         return await response.json();  //获取数据信息
+//       }
+//       throw new Error('Request failed!');
+//   } catch (err) {
+//     console.log(err);
+//   } 
+// }
 
 const ProfileBox = () => {
 
   const data:any = GetData();
+  console.log(data);
+  
   let imagesGif = require("../../common/images.gif");
   return (
     <Box
@@ -67,20 +70,20 @@ const ProfileBox = () => {
           component="span"
           sx={{ mt: 3, color: "primary.main", fontSize: 22 }}
         >
-          WINS: 10
+          WINS: {data.wins}
         </Box>
         <Box 
           component="span"
           sx={{ mt: 2, color: "warning.main", fontSize: 22 }}
         >
-          LOSES: 10
+          LOSES: {data.loses}
         </Box>
 
         <Box
           component="span"
           sx={{ mt: 2, color: "success.main", fontSize: 22 }}
         >
-          score: 1200
+          score: {data.score}
         </Box>
 
         <Button key="edit" sx= {{ mt: 2}}>
