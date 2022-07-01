@@ -1,9 +1,18 @@
 export const API_HOST = "http://localhost:3000"
-export const API_GET_DATA = `${API_HOST}"/users?"`
+export const API_GET_DATA = `${API_HOST}"/users?`
+
+
+export const user:any = {
+  username: '',
+  ages: '',
+  wins: 0,
+  loses: 0,
+  score: 0
+}
 
 export  const GetData = async() => {  //括号里setuser
   const queryParams = 'username='; 
-  const endpoint = API_GET_DATA + queryParams // + username
+  const endpoint = API_GET_DATA// + queryParams // + username
   try {
     const response = await fetch(endpoint) //???
       if (response.ok) {

@@ -17,11 +17,9 @@ const HanldleButton = () => {
 
   return (
     <div className="div">
-      {
         <button className="box" onClick={handleLoginClick}>
           Login with 42
         </button>
-      }
     </div>
   );
 };
@@ -40,6 +38,9 @@ const Home = () => {
   return (
     <div className="image" style={sectionStyle}>
       <ResponsiveAppBar />
+      <div id="welcome">
+        <h1>WELCOME !!! GAME PONG </h1>
+      </div>
       <HanldleButton />
     </div>
   );

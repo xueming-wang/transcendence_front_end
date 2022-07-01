@@ -28,10 +28,10 @@ const ProfileBox = () => {
 
   const data:any = GetData();
   console.log(data);
-  
+
   let imagesGif = require("../../common/images.gif");
   return (
-    <Box
+    <Box 
       className="profil"
       sx={{
          display: "flex",

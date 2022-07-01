@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import { DataGrid } from '@mui/x-data-grid';
 import { useState } from "react";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
-import { GetData, PostData, PutData } from "../../../global/constants";
+import { GetData, PostData, PutData, user } from "../../../global/constants";
 
   
 
@@ -29,10 +29,11 @@ export const EditPage = () => {                  //修改页面
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
 		
-		const dataToPost: any = {}
-		dataToPost['username'] = newdata.get('username')
+		const dataToPost = user
+		user['username'] = newdata.get('username')
+		
 
-		PutData(dataToPost);
+		PutData(user);
 		//put 更新数据 par name
 	 };
 
@@ -60,14 +61,12 @@ export const EditPage = () => {                  //修改页面
 				}}
 			  >
 				<Box component="form" noValidate onSubmit={handleSubmit}sx={{ mt: 3 }} > 
-					<button>
-					<img
+				
+				<a href="/home/"><img
 						src={imagesGif}
-						alt="photo"
-						onClick= {() => setImg(prevImg => !prevImg)}
-					
-					/>
-					</button>
+						alt="photo"/>
+				</a>
+				
 					<Box sx={{ fontSize: 30 }}>
 							user:11 {data.username}
 					</Box>
