@@ -12,6 +12,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useState } from "react";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import { GetData, PostData, PutData, user } from "../../../global/constants";
+import { margin } from '@mui/system';
 
   
 
@@ -53,28 +54,21 @@ export const EditPage = () => {                  //修改页面
 					display: "flex",
 					flexDirection: { xs: "column", md: "row" },
 					alignItems: "center",
-					bgcolor: "background.paper",
 					overflow: 'hidden',
 					borderRadius: "20px",
 					boxShadow: 1,
 					fontWeight: "bold",
 				}}
 			  >
-				<Box component="form" noValidate onSubmit={handleSubmit}sx={{ mt: 3 }} > 
-				
+				<Box component="form" noValidate sx={{ mt: 3 }} > 
 				<a href="/home/"><img
 						src={imagesGif}
 						alt="photo"/>
 				</a>
-				
-					<Box sx={{ fontSize: 30 }}>
-							user:11 {data.username}
-					</Box>
 				</Box>
-
-				{/* <Box  component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}> */}
-					<Grid container spacing={20} >
-						<Grid item xs={10} sx={{ mt: 3 }} >
+				<Box  component="form" noValidate onSubmit={handleSubmit}>
+					<Grid container >
+						<Grid className='editname' >
 							<TextField
 							required
 							fullWidth
@@ -85,8 +79,8 @@ export const EditPage = () => {                  //修改页面
 							/> 
 						</Grid>
 					</Grid>
-					<Button  type="submit"  sx={{m: 2 , mt: 30}}>valide</Button>
-				{/* </Box> */}
+					<Button  type="submit" className='editvalide' >valide</Button>
+				</Box>
 				
 			 	</Box>
 		  </div>

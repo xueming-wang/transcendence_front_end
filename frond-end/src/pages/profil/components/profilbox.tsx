@@ -6,6 +6,8 @@ import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit";
 import { GetData } from "../../../global/constants";
+import { red } from "@mui/material/colors";
+import { reduceEachTrailingCommentRange } from "typescript";
 
 
   //GET 用fetch来通过id数字来获取数据
@@ -31,13 +33,12 @@ const ProfileBox = () => {
 
   let imagesGif = require("../../common/images.gif");
   return (
-    <Box 
+    <Box  
       className="profil"
       sx={{
          display: "flex",
-         flexDirection: { xs: "column", md: "row" },
+         flexDirection: { xs: "column", md: "row"},
          alignItems: "center",
-         bgcolor: "background.paper",
          overflow: 'hidden',
          borderRadius: "20px",
          boxShadow: 1,

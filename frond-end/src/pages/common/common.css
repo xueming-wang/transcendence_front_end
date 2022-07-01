@@ -55,13 +55,28 @@
   width: 100px;
 }
 
+.editname{
+  position: relative;
+  width: 400px;
+  height: 50px;
+  top: 10px;
+  left: 30px;
+}
+
+.editvalide {
+  top: 80px;
+  left: 300px;
+  
+}
 /*css for signup*/
 .signup {
   height: 40px;
   width: 100%;
 }
 
-.profil {
+.profil { 
+  background-color: rgb(137, 171, 128);
+  color: rgb(25, 24, 24);
   transform: translateX(50%);
   transform: translateY(300);
   height: 450px;
