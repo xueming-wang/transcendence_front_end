@@ -7,7 +7,6 @@ let img = {
   backgroundImage: `url(${Background})`,
 };
 
-
 const Jeu = () => {
   return (
     <div  className="image" style={img}>

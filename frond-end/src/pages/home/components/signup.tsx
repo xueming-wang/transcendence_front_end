@@ -11,23 +11,21 @@ import Container, { containerClasses } from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
-import { PostData, user } from '../../../global/constants';
+import { PostData, user} from '../../../global/constants';
 
 
 const theme = createTheme();
 export default function SignUp() {
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const newuser = user;
-
-    newuser['username'] = data.get('username')
-    newuser['ages'] = data.get('ages')
+    newuser['username'] = data.get('username');
+    newuser['ages'] = data.get('ages');
    
-     //POST to all de users
-
     //转换填进去的内容
     console.log(newuser);
     //发送

@@ -1,10 +1,9 @@
 export const API_HOST = "http://localhost:3000"
 export const API_GET_DATA = `${API_HOST}"/users?`
 
-
 export const user:any = {
   username: '',
-  ages: '',
+  ages: 0,
   wins: 0,
   loses: 0,
   score: 0

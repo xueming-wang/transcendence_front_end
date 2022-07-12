@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import { DataGrid } from '@mui/x-data-grid';
 import { useState } from "react";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
-import { GetData, PostData, PutData, user } from "../../../global/constants";
+import { GetData, PostData, PutData, user} from "../../../global/constants";
 import { margin } from '@mui/system';
 
   
@@ -29,12 +29,12 @@ export const EditPage = () => {                  //修改页面
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
+		console.log();
 		
-		const dataToPost = user
-		user['username'] = newdata.get('username')
-		
+		const dataToPost = user;
+		dataToPost['username'] = data.get('username');
 
-		PutData(user);
+		PutData(dataToPost);
 		//put 更新数据 par name
 	 };
 
