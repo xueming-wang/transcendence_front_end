@@ -70,7 +70,7 @@ export default function SignUp() {
                   fullWidth
                   name="password"
                   label="password"
-                
+                  // type="password"
                   id="password"
                   autoComplete="password"
                 />
