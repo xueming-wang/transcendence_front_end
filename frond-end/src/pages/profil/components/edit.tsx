@@ -13,42 +13,41 @@ import { useState } from "react";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import { GetData, PostData, PutData, user} from "../../../global/constants";
 import { margin } from '@mui/system';
-
   
 
 //GET 数据
 export const EditPage = () => {                  //修改页面
+	const data:any = GetData();
 
 	let img = {
 		backgroundImage: `url(${Background})`,
 	};
-	const[editImg, setImg] = useState(false);
 
-	const data:any = GetData();
+	const[editImg, setImg] = useState(data.img);
+	const[username, setUsername] = useState(data.username);
+
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
-		console.log();
+		console.log('here:', newdata.get('imgtest'));
+		console.log('here2:', newdata.get('username'));
 		
-		const dataToPost = user;
-		dataToPost['username'] = data.get('username');
+		// const dataToPost = user;
+		// dataToPost['username'] = data.get('username');
 
-		PutData(dataToPost);
+
+		//PutData(dataToPost);
 		//put 更新数据 par name
 	 };
 
-	 const handleClickImg = () => {
-		// 👇️ refers to the image element
-		// console.log(event.target);
-		console.log('Image clicked');
-	  };
-	  let imagesGif = require("../../common/images.gif");
+	
+	let imagesGif = require("../../common/images.gif");
 
 	return (
 		<div className="image" style={img}>
 		 	<ResponsiveAppBar />
-			 <Box
+			 <Box 
 				className="profil"
 				sx={{
 					display: "flex",
@@ -58,32 +57,33 @@ export const EditPage = () => {                  //修改页面
 					borderRadius: "20px",
 					boxShadow: 1,
 					fontWeight: "bold",
-				}}
-			  >
-				<Box component="form" noValidate sx={{ mt: 3 }} > 
-				<a href="/home/"><img
+				}}>
+				<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} > 
+				{/* <a href="/home/"> */}
+					<input type='file'
 						src={imagesGif}
-						alt="photo"/>
-				</a>
-				</Box>
-				<Box  component="form" noValidate onSubmit={handleSubmit}>
+						name='imgtest'
+						id='imgtest'
+						alt="photo"
+						accept='image/jpeg'
+						/>
+				{/* </a> */}
 					<Grid container >
 						<Grid className='editname' >
 							<TextField
-							required
-							fullWidth
-							id="username"
-							label="entre your New Name"
-							name="username"
-							autoComplete="username"
+								required
+								fullWidth
+								id="username"
+								label="entre your New Name"
+								name="username"
+								autoComplete="username"
 							/> 
 						</Grid>
 					</Grid>
 					<Button  type="submit" className='editvalide' >valide</Button>
 				</Box>
-				
-			 	</Box>
-		  </div>
+			</Box>
+		</div>
 	)
 
 }

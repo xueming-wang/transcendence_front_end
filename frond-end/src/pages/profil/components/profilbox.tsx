@@ -31,7 +31,7 @@ const ProfileBox = () => {
   const data:any = GetData();
   console.log(data);
 
-  let imagesGif = require("../../common/images.gif");
+   let imagesGif = require("../../common/images.gif");
   return (
     <Box  
       className="profil"
@@ -49,6 +49,7 @@ const ProfileBox = () => {
         component="img"
         sx={{ height: 250, width: 250 }}
         alt="The photo from user."
+        // src={data.img}
         src={imagesGif}
       />
       <Box
@@ -60,29 +61,30 @@ const ProfileBox = () => {
           minWidth: { md: 350 },
         }}
       >
-        <Box component="span" sx={{ fontSize: 20 }}>
+        <Box component="span" sx={{ fontSize: 23, mt: 2 }}>
           user: {data.username}
         </Box>
+
         <Box component="span" sx={{ fontSize: 20, mt: 2 }}>
-          ages: {data.ages}
+          Email: {data.Email}
         </Box>
 
         <Box
           component="span"
-          sx={{ mt: 3, color: "primary.main", fontSize: 22 }}
+          sx={{ mt: 3, color: "primary.main", fontSize: 20 }}
         >
           WINS: {data.wins}
         </Box>
         <Box 
           component="span"
-          sx={{ mt: 2, color: "warning.main", fontSize: 22 }}
+          sx={{ mt: 2, color: "warning.main", fontSize: 20 }}
         >
           LOSES: {data.loses}
         </Box>
 
         <Box
           component="span"
-          sx={{ mt: 2, color: "success.main", fontSize: 22 }}
+          sx={{ mt: 2, color: "success.main", fontSize: 20 }}
         >
           score: {data.score}
         </Box>

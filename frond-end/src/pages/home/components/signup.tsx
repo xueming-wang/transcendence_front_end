@@ -24,12 +24,18 @@ export default function SignUp() {
 
     const newuser = user;
     newuser['username'] = data.get('username');
-    newuser['ages'] = data.get('ages');
+    newuser['password'] = data.get('password');
+    newuser['Email'] = data.get('Email');
    
     //转换填进去的内容
     console.log(newuser);
     //发送
     PostData( newuser );
+
+    // if (newuser)
+    // setIsLogin(newuser)
+    // navigateto('profile')
+    // else return
  
   };
 
@@ -62,11 +68,22 @@ export default function SignUp() {
                 <TextField
 				          required
                   fullWidth
-                  name="ages"
-                  label="ages"
-                  type="ages"
-                  id="ages"
-                  autoComplete="ages"
+                  name="password"
+                  label="password"
+                  type="password"
+                  id="password"
+                  autoComplete="password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+				          required
+                  fullWidth
+                  name="Email"
+                  label="Email"
+                  type="Email"
+                  id="Email"
+                  autoComplete="Email"
                 />
               </Grid>
             </Grid>

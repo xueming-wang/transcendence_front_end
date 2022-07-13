@@ -1,17 +1,22 @@
-export const API_HOST = "http://localhost:3000"
-export const API_GET_DATA = `${API_HOST}"/users?`
+import { hostname } from "os";
+
+export const API_HOST = "http://localhost:5000"
+export const API_GET_DATA = `${API_HOST}/user/register`
+
 
 export const user:any = {
   username: '',
-  ages: 0,
+  Email: '',
+  password:'',
   wins: 0,
   loses: 0,
-  score: 0
+  score: 0,
+  img:''
 }
 
 export  const GetData = async() => {  //括号里setuser
   const queryParams = 'username='; 
-  const endpoint = API_GET_DATA// + queryParams // + username
+  const endpoint = API_GET_DATA;
   try {
     const response = await fetch(endpoint) //???
       if (response.ok) {
@@ -32,7 +37,6 @@ export const PostData = async(data:any) => {
   const name = dataInForm['username'];
 	const endpoint = API_GET_DATA + queryParams + name
 	console.log(endpoint);
-
 	try {
 		const response = await fetch(endpoint, {
 		method: "POST",
