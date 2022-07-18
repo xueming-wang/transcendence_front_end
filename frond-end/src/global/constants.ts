@@ -11,7 +11,7 @@ export const user:any = {
   wins: 0,
   loses: 0,
   score: 0,
-  img:''
+  img:null
 }
 
 export  const GetData = async() => {  //括号里setuser

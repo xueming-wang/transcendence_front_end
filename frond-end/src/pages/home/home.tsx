@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "../common/common.css";
 import { ResponsiveAppBar } from "./components/appBar";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ const HanldleButton = () => {
   const [isLogin, setIsLogin] = useContext(MyContext);
 
   const handleLoginClick = async () => {
+    setIsLogin(true)
+    navigate('/signup')
     //按login 时候处理
     // setIsLogin(await GetData());
     
@@ -28,13 +30,13 @@ const HanldleButton = () => {
     //   navigate('/signup')
     // else 
     //   navigate("/profile");
-
-    setIsLogin(true)
-    navigate('/signup')
   };
 
   return (
     <div className="div">
+        <button className="box" onClick={handleLoginClick}>
+          inscription
+        </button>
         <button className="box" onClick={handleLoginClick}>
           Login with 42
         </button>
@@ -47,6 +49,12 @@ let sectionStyle = {
 };
 
 const Home = () => {
+
+  // useEffect(() => {
+  //   console.log("!!!!!!!!!!!!!");
+  // },);
+
+
   return (
     <div className="image" style={sectionStyle}>
       <ResponsiveAppBar />

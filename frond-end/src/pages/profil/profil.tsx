@@ -43,3 +43,7 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+
+//useEffect()的作用就是指定一个副效应函数，组件每渲染一次，该函数就自动执行一次。组件首次在网页 DOM 加载后，副效应函数也会执行。

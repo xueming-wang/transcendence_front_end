@@ -26,18 +26,17 @@ export const EditPage = () => {                  //修改页面
 	const[editImg, setImg] = useState(data.img);
 	const[username, setUsername] = useState(data.username);
 
-
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
+		const newimg =  newdata.get('imgtest');
+
 		console.log('here:', newdata.get('imgtest'));
 		console.log('here2:', newdata.get('username'));
 		
 		// const dataToPost = user;
 		// dataToPost['username'] = data.get('username');
-
-
-		//PutData(dataToPost);
+		PutData(newimg);
 		//put 更新数据 par name
 	 };
 
@@ -60,13 +59,13 @@ export const EditPage = () => {                  //修改页面
 				}}>
 				<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} > 
 				{/* <a href="/home/"> */}
+				<div>
 					<input type='file'
-						src={imagesGif}
-						name='imgtest'
-						id='imgtest'
-						alt="photo"
+						 name='imgtest'
+						 id='imgtest'
 						accept='image/jpeg'
-						/>
+					/>
+				</div>
 				{/* </a> */}
 					<Grid container >
 						<Grid className='editname' >
@@ -74,7 +73,7 @@ export const EditPage = () => {                  //修改页面
 								required
 								fullWidth
 								id="username"
-								label="entre your New Name"
+								label="enter your New Name"
 								name="username"
 								autoComplete="username"
 							/> 

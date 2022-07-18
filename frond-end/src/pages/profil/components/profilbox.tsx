@@ -49,8 +49,8 @@ const ProfileBox = () => {
         component="img"
         sx={{ height: 250, width: 250 }}
         alt="The photo from user."
-        // src={data.img}
-        src={imagesGif}
+        src={data.img}
+        // src={imagesGif}
       />
       <Box
         sx={{

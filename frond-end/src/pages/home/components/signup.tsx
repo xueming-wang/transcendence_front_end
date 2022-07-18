@@ -12,11 +12,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import { PostData, user} from '../../../global/constants';
+import Alert from '@mui/material/Alert';
 
 
 const theme = createTheme();
-export default function SignUp() {
 
+export default function SignUp() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,7 +30,7 @@ export default function SignUp() {
    
     //转换填进去的内容
     console.log(newuser);
-    //发送
+    //post to backend
     PostData( newuser );
 
     // if (newuser)
@@ -38,6 +39,10 @@ export default function SignUp() {
     // else return
  
   };
+
+  const Success = () => {  
+     <Alert severity="success">sing up success!</Alert>
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -87,7 +92,8 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>Sign Up</Button>
+            <Button type="submit" onClick={Success} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+              Sign Up</Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
               </Grid>
