@@ -3,9 +3,14 @@ import { hostname } from "os";
 export const API_HOST = "http://localhost:5000"
 export const API_GET_DATA = `${API_HOST}/user/register`
 
+export interface typeuser  {
+  pseudo: string,
+  password: string,
+  password2: string
+}
 
 export const user:any = {
-  username: '',
+  pseudo: '',
   Email: '',
   password:'',
   wins: 0,
@@ -13,6 +18,13 @@ export const user:any = {
   score: 0,
   img:null
 }
+
+export const creeruser:any = {
+  pseudo: '',
+  password:'',
+  password2:''
+}
+
 
 export  const GetData = async() => {  //括号里setuser
   const queryParams = 'username='; 

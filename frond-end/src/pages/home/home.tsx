@@ -10,7 +10,7 @@ const HanldleButton = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useContext(MyContext);
 
-  const handleLoginClick = async () => {
+  const handleInscriptioClick = async () => {
     setIsLogin(true)
     navigate('/signup')
     //按login 时候处理
@@ -25,20 +25,24 @@ const HanldleButton = () => {
     //   navigate("/signin");
     //   return
     // }
-
-    // if (!isLogin.username)
-    //   navigate('/signup')
-    // else 
-    //   navigate("/profile");
   };
+
+  const handleLoginClick = async () => {
+    setIsLogin(true)
+    navigate('/login')
+  }
 
   return (
     <div className="div">
-        <button className="box" onClick={handleLoginClick}>
+        <button className="box" onClick={handleInscriptioClick}>
           inscription
         </button>
-        <button className="box" onClick={handleLoginClick}>
+        {/* //connect 42 */}
+        <button className="box"> 
           Login with 42
+        </button>
+        <button className="box" onClick={handleLoginClick}>
+          Se connecte
         </button>
     </div>
   );

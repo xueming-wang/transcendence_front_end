@@ -20,9 +20,7 @@ const Chat = () => {
 
     console.log('!!!!!!!!!: ', {searchname});
     PostData(searchname);
-
   }
-
 
 
   return (
