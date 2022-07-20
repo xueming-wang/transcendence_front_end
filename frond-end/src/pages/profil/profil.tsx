@@ -37,7 +37,7 @@ const Profile = () => {
   return (
     <div className="image" style={img}>
       <ResponsiveAppBar />
-      <ProfileBox  /> 
+      {/*<ProfileBox  /> */}
     </div>
   );
 };

@@ -13,6 +13,7 @@ import SportsHandballRoundedIcon from "@mui/icons-material/SportsHandballRounded
 import { MyContext } from "../../common/route";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import {PostData} from "../../../global/constants";
 
 const pages = ["Home", "profile", "jeu", "chat", "logout"];
 
@@ -28,9 +29,9 @@ export const CommonBox = () => {
   const [isLogin, setIsLogin] = React.useContext(MyContext);
   const navigate = useNavigate();
 
-  const logout = () => {
-    //logout 处理状态 变成false 转向首页
-    setIsLogin(false);
+  const logout = async () => {
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    setIsLogin(null);
     navigate("/");
   };
 
@@ -86,8 +87,6 @@ export const ResponsiveAppBar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 10,
               display: { xs: "none", md: "flex" },

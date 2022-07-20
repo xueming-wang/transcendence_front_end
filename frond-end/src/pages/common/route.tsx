@@ -7,6 +7,7 @@ import Chat from "../chat/char";
 import SignUp from "../home/components/signup";
 import React, { useContext, useEffect, useState } from "react";
 import { EditPage } from "../profil/components/edit";
+import {GetData} from "../../global/constants";
 
 ////创建context
 export const MyContext = React.createContext<any>(null);
@@ -19,7 +20,7 @@ const RouteStat = () => {
       <Routes>
         <Route path="/" element={<Profile />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/edit" element={<EditPage />} />
+        {/*<Route path="/profile/edit" element={<EditPage />} />*/}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/jeu" element={<Jeu />} />
         <Route path="/chat" element={<Chat />} />
@@ -37,13 +38,18 @@ const RouteStat = () => {
   }
 };
 
+const checkIsLogin = async (setter: Function) => {
+  const resp = await GetData("/api/user/isLogin");
+  console.log('resp', resp);
+  setter(resp)
+}
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
 
-  // useEffect(() => {
-  //   setIsLogin(true);
-  // }, []);
+  useEffect(() => {
+    checkIsLogin(setIsLogin).then()
+  }, []);
 
   return (
     <div>

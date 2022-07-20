@@ -3,7 +3,7 @@ import Background from "../common/pp2.gif";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { DataGrid } from '@mui/x-data-grid';
-import { PostData } from "../../global/constants";
+// import { PostData } from "../../global/constants";
 
 let img = {
   backgroundImage: `url(${Background})`,
@@ -19,7 +19,7 @@ const Chat = () => {
     const searchname = newdata.get('searchname');
 
     console.log('!!!!!!!!!: ', {searchname});
-    PostData(searchname);
+    // PostData(searchname);
   }
 
 
