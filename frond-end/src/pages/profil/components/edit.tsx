@@ -13,6 +13,8 @@ import { useState } from "react";
 import { API_HOST, API_GET_DATA } from "../../../global/constants"
 import { GetData, PostData, PutData, user} from "../../../global/constants";
 import { margin } from '@mui/system';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
   
 
 //GET 数据
@@ -23,25 +25,43 @@ export const EditPage = () => {                  //修改页面
 		backgroundImage: `url(${Background})`,
 	};
 
+	let imagesGif = require("../../common/images.gif");  //exemple
+
 	const[editImg, setImg] = useState(data.img);
 	const[username, setUsername] = useState(data.username);
+
+	const onImageChange = (e:any) => {
+		const [file] = e.target.files;
+		setImg(URL.createObjectURL(file));
+	};
+			//**blob to dataURL**
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
 		const newimg =  newdata.get('imgtest');
+		const newname =  newdata.get('username');
 
 		console.log('here:', newdata.get('imgtest'));
 		console.log('here2:', newdata.get('username'));
 		
 		// const dataToPost = user;
 		// dataToPost['username'] = data.get('username');
-		PutData(newimg);
+		PutData(newdata);
 		//put 更新数据 par name
-	 };
+
+		// const imgDataUrl = readAsDataURL(newimg)
+	};
 
 	
-	let imagesGif = require("../../common/images.gif");
+	//**blob to dataURL**
+	// function blobToDataURL(blob:any, callback:any) {
+	// 	var a = new FileReader();
+	// 	a.onload = (e) => {
+	// 		callback(e.target.result);
+	// 	}
+	// 	a.readAsDataURL(blob);
+	// }
 
 	return (
 		<div className="image" style={img}>
@@ -57,29 +77,40 @@ export const EditPage = () => {                  //修改页面
 					boxShadow: 1,
 					fontWeight: "bold",
 				}}>
-				<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} > 
-				{/* <a href="/home/"> */}
-				<div>
-					<input type='file'
-						 name='imgtest'
-						 id='imgtest'
+				<Box component="form" noValidate onSubmit={handleSubmit}  > 
+					<Box>
+					<img src={editImg} height='200' width='200' alt="The photo from user."/>
+
+					<input 
+						className='cImg'
+						onChange={onImageChange}
+						type='file'
+						name='imgtest'
+						id='imgtest'
 						accept='image/jpeg'
 					/>
-				</div>
-				{/* </a> */}
-					<Grid container >
-						<Grid className='editname' >
-							<TextField
-								required
-								fullWidth
-								id="username"
-								label="enter your New Name"
-								name="username"
-								autoComplete="username"
-							/> 
-						</Grid>
-					</Grid>
-					<Button  type="submit" className='editvalide' >valide</Button>
+					</Box>
+					{/* <IconButton color="primary" aria-label="upload picture" component="label">
+						<Box
+							onChange={onImageChange}
+							component="img"
+							sx={{ height: 200, width: 200 }}
+							alt="The photo from user."
+							src={editImg}
+						/>
+						<input hidden accept="image/*" type="file" />
+						<PhotoCamera />
+					</IconButton> */}
+
+					<TextField className='newName'
+						required
+						id="username"
+						label="enter your New Name"
+						name="username"
+						autoComplete="username"
+					/>
+
+				   <Button  type="submit" className='editvalide' >valide</Button>
 				</Box>
 			</Box>
 		</div>
@@ -107,40 +138,3 @@ const Edit = () => {
 
 
 export default Edit;
-
-// export default function BasicPopover() {
-//   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-
-//   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-
-//   const open = Boolean(anchorEl);
-//   const id = open ? 'simple-popover' : undefined;
-
-//   return (
-//     <div>
-//       <Button aria-describedby={id} color="inherit" variant="contained" onClick={handleClick}>
-//         <EditIcon></EditIcon>settings
-//       </Button>
-//       <Popover
-//         id={id}
-//         open={open}
-//         anchorEl={anchorEl}
-//         onClose={handleClose}
-//         anchorOrigin={{
-//           vertical: 'bottom',
-//           horizontal: 'left',
-//         }}
-//       >
-//          <Typography sx={{ p: 20 }}>
-//           The content of the Popover.
-//          </Typography> 
-//       </Popover>
-//     </div>
-//   );
-// }

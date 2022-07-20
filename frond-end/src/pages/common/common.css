@@ -64,8 +64,8 @@
 }
 
 .editvalide {
-  top: 80px;
-  left: 300px;
+  top: 10px;
+  left: 100px;
   
 }
 /*css for signup*/
@@ -135,4 +135,16 @@
   left: 45%;
   height: 49px;
   width: 100px;
+}
+
+.newName {
+  height: 50px;
+  width: 300px;
+}
+
+.cImg {
+  position: fixed;
+  top: 200px;
+  left: 0px;
+  opacity: 1;
 }
