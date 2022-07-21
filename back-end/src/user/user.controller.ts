@@ -106,7 +106,7 @@ export class UserController {
     @Res() res: Response,
   ): Promise<UserDto> {
     const u = await this.userService.getUserById(req.session.userId)
-    
+
     if (data.name && !(await this.userService.nameFormatVerify(data.name))) {
       res.status(403).send('Username formatting is incorrect');
       return;
@@ -123,7 +123,6 @@ export class UserController {
     }
 
     // put here upload image logic ... and update u.avatar
-
     res.status(200).json(await this.userService.updateUser(u))
   }
 

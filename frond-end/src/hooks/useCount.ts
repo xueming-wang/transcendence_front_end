@@ -16,3 +16,24 @@ export function useCount() {
   };
   return { count, decrease, increase, reset };
 }
+
+
+
+//   const [win, setWin] = useState(0);  //win 数量
+//   // const WinPlus = () => {
+//   // 	setWin((prev) => {
+//   // 		return prev + 1;
+//   // 	})
+//   // }
+//   const [Loses, setLoses] = useState(0);  //lose 数量
+//   // const LosesPlus = () => {
+//   // 	setLoses( function(prev) {
+//   // 		return prev + 1;
+//   // 	})
+//   // }
+//   const [Score, setScore] = useState(0);  //socre 分数
+  // const ScorePlus = () => {
+  // 	setScore( function(prev) {
+  // 		return prev + 500;
+  // 	})
+  // }

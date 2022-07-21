@@ -15,13 +15,13 @@ import { useNavigate } from "react-router-dom";
 export const MyContext = React.createContext<any>(null);
 
 const RouteStat = () => {
-  const [isLogin] = useContext(MyContext);
+  const [isLogin, setIsLogin] = useContext(MyContext);
 
   if (isLogin) {
     return (
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<Profile />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditPage />} />
         <Route path="/jeu" element={<Jeu />} />
@@ -56,13 +56,15 @@ const App = () => {
 
   const [isLogin, setIsLogin] = useState(null);
 
+  //init user
   useEffect(() => {
     checkIsLogin(setIsLogin).then()
   }, []);
 
   // const navigate = useNavigate();
   // const user: any = isLogin
-  // if (!user.name) {
+  // console.log(user.name)
+  // if (user && !user.name) {
   //   navigate("/signup")
   // }
 

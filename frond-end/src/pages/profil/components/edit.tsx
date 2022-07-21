@@ -7,8 +7,6 @@ import Background from "../../common/pp2.gif";
 import Fab from '@mui/material/Fab';
 import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
-import { useState } from "react";
-import { GetData } from "../../../global/constants";
 import { PutData } from '../../../global/constants';
 import { useContext } from 'react';
 import { MyContext } from '../../common/route';
@@ -27,12 +25,12 @@ export const EditPage = () => {                  //修改页面
 		const newdata = new FormData(event.currentTarget);
 		// const newimg =  newdata.get('avatar');
 		const newname =  newdata.get('name');
-	
-		// console.log('here:', newdata.get('avatar'));
 		console.log('here2:', newdata.get('name'));
-	
-		// PutData("/api/user/id", newdata);
 
+		if (checkName(newname) === 0) {
+			return ;
+		}
+		// PutData("/api/user/id", newdata);
 		const res = PutData("/api/user/update", {name: newname});
 
 		const handleChange = (newname: any) => {
@@ -50,6 +48,19 @@ export const EditPage = () => {                  //修改页面
 		else alert('Update fail')
 	};
 
+	const checkName = (newname:any) => {
+		let i = newname.length;
+		if(i < 6 || i > 16){
+			alert('username long must be 5~15')
+			return 0;
+		}
+		var isletter = /^[a-zA-Z]+$/.test(newname);
+		if (isletter === false) {
+			alert('username must be a lettre')
+			return 0;
+		}
+
+	}
 
 	return (
 		<div className="image" style={img}>
