@@ -42,11 +42,11 @@ export class UserService {
   async updateUserByAuth(user: UserDto): Promise<UserDto> {
     const upUser: UserDto = user;
 
-    return await this.getUserById(user.id).then((user) => {
-      if (!user) return this.usersRepository.save(upUser);
+    return await this.getUserById(user.id).then((u) => {
+      if (!u) return this.usersRepository.save(upUser);
       else {
-        user.online = 1;
-        return this.usersRepository.save(user);
+        u.online = 1;
+        return this.usersRepository.save(u);
       }
     });
   }

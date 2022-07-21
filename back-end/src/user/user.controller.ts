@@ -17,7 +17,6 @@ import { UserService } from './user.service';
 import { UserGuard } from '../auth/user.guard';
 import { RefererGuard } from '../auth/referer.guard';
 import { Response } from 'express';
-import {decodeToken, generateToken} from "../auth/auth.service";
 
 @Controller('user')
 export class UserController {
@@ -139,14 +138,14 @@ export class UserController {
     const user: LimitedUserDto = req.user;
 
     // set session when user exist
-    if (user) res.cookie('userId', generateToken(user.id))
+    if (user) req.session.userId = user.id;
     res.redirect('http://localhost:3001/');
   }
 
   @Get('isLogin')
   @UseGuards(RefererGuard)
   async isLogin(@Req() req: any): Promise<boolean> {
-    const id = decodeToken(req.cookies.userId);
+    const id = req.session.userId;
     const user = await this.userService.getUserById(id);
 
     return !!user;

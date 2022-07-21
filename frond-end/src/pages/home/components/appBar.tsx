@@ -30,7 +30,7 @@ export const CommonBox = () => {
   const navigate = useNavigate();
 
   const logout = async () => {
-    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    await PostData("api/user/auth/logout", {}).then()
     setIsLogin(null);
     navigate("/");
   };
