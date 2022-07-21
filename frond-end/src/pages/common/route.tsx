@@ -7,7 +7,9 @@ import Chat from "../chat/char";
 import SignUp from "../home/components/signup";
 import React, { useContext, useEffect, useState } from "react";
 import { EditPage } from "../profil/components/edit";
-import {GetData} from "../../global/constants";
+import { GetData } from "../../global/constants";
+import { useNavigate } from "react-router-dom";
+
 
 ////创建context
 export const MyContext = React.createContext<any>(null);
@@ -18,10 +20,10 @@ const RouteStat = () => {
   if (isLogin) {
     return (
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<Profile />} />
         <Route path="/profile" element={<Profile />} />
-        {/*<Route path="/profile/edit" element={<EditPage />} />*/}
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile/edit" element={<EditPage />} />
         <Route path="/jeu" element={<Jeu />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<Home />} />
@@ -38,18 +40,31 @@ const RouteStat = () => {
   }
 };
 
-const checkIsLogin = async (setter: Function) => {
-  const resp = await GetData("/api/user/isLogin");
-  console.log('resp', resp);
-  setter(resp)
-}
+
+
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+
+  const checkIsLogin = async (setter: Function) => {
+    const resp = await GetData("/api/user/isLogin");
+    if (resp) {
+      const user = await GetData("/api/user/id");
+      console.log(user);
+      setter(user)
+    }
+  }
+
+  const [isLogin, setIsLogin] = useState(null);
 
   useEffect(() => {
     checkIsLogin(setIsLogin).then()
   }, []);
+
+  // const navigate = useNavigate();
+  // const user: any = isLogin
+  // if (!user.name) {
+  //   navigate("/signup")
+  // }
 
   return (
     <div>

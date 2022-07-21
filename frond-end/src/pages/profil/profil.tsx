@@ -4,6 +4,8 @@ import ProfileBox from "./components/profilbox";
 import { useState } from "react";
 import Background from "../common/pp2.gif";
 import { GetData } from "../../global/constants"
+import { MyContext } from "../common/route";
+import { useNavigate } from "react-router-dom";
 //useEffect 当你想在什么条件下要变化什么样子的时候使用
 
 let img = {
@@ -37,7 +39,7 @@ const Profile = () => {
   return (
     <div className="image" style={img}>
       <ResponsiveAppBar />
-      {/*<ProfileBox  /> */}
+      <ProfileBox  />
     </div>
   );
 };

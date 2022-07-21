@@ -6,7 +6,7 @@ export  const GetData = async(url: string) => {
       if (response.status === 200) {
         return await response.json();
       }
-			else return null
+		else return null
   } catch (err) {
     return null
   } 
@@ -33,29 +33,22 @@ export const PostData = async(url: string, data: any) => {
 	  return null
 	}
 }
-//
-// export const PutData = async(data:any) => {
-//
-//   const dataInForm: any = {}
-//
-//   const queryParams = 'username=';
-//   const name = dataInForm['username'];
-// 	const endpoint = API_GET_DATA + queryParams + name
-// 	console.log(endpoint);
-//
-// 	try {
-// 		const response = await fetch(endpoint, {
-// 		method: "PUT",
-// 		headers: {
-// 		  'Content-type': 'application/json',
-// 		},
-// 		body: JSON.stringify({data})
-// 		})
-//     // if (response.ok) {
-//     //   const jsonResponse = await response.json();
-//     //   // Code to execute with jsonResponse
-//     // }
-// 	} catch(err) {
-// 	  console.log(err);
-// 	}
-//  }
+
+export const PutData = async(url: string, data: any) => {
+
+	try {
+		const response = await fetch(url, {
+		method: "PUT",
+		headers: {
+		  'Content-type': 'application/json',
+		},
+		body: JSON.stringify({data})
+		})
+    // if (response.ok) {
+    //   const jsonResponse = await response.json();
+    //   // Code to execute with jsonResponse
+    // }
+	} catch(err) {
+	  console.log(err);
+	}
+ }

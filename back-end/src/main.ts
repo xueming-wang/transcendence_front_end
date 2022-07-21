@@ -4,11 +4,12 @@ import * as session from 'express-session';
 import * as pgSession from 'connect-pg-simple';
 import * as pg from 'pg';
 
+
 async function bootstrap() {
   const pgPool = new pg.Pool({
     // host: 'postgres',
     database: 'db',
-    user: 'kev_ye',
+    user: 'xuemingwang',
     port: 5432,
     password: '',
   });

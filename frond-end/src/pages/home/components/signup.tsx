@@ -42,7 +42,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="pseudo"
-                  label="Username"
+                  label="name"
                   name="pseudo"
                   autoComplete="pseudo"
                 />
@@ -62,37 +62,3 @@ export default function SignUp() {
 }
 
 
-
-// const theme = createTheme();
-
-// const SignUp = () => {
-
-// return (
-//     <ThemeProvider theme={theme}>
-//       <Container component="main" maxWidth="xs">
-//         <CssBaseline />
-//         <Box
-//           sx={{ marginTop: 8,display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-//           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-//             <LockOutlinedIcon />
-//           </Avatar>
-//           <Typography component="h1" variant="h5">
-//             Sign up
-//           </Typography>
-
-//           <Box>
-//             <p>userName: </p>
-//             <input type="text" className='signup'></input>
-//             <p>ages: </p>
-//             <input type="test" className='signup'></input>
-//             <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} >Sign Up</Button>
-//           </Box>
-
-//         </Box>
-//       </Container>
-//     </ThemeProvider>
-//   );
-// }
-
-
-// export default SignUp
