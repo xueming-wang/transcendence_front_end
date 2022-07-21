@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/ModeEdit';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ResponsiveAppBar } from "../../home/components/appBar"
 import Background from "../../common/pp2.gif";
 import Fab from '@mui/material/Fab';
@@ -10,55 +10,47 @@ import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import { GetData } from "../../../global/constants";
 import { PutData } from '../../../global/constants';
+import { useContext } from 'react';
+import { MyContext } from '../../common/route';
 
-  
-
+let img = {
+	backgroundImage: `url(${Background})`,
+  };
 //GET 数据
 export const EditPage = () => {                  //修改页面
-	const data:any = GetData("/api/user/id");
-	
-	let img = {
-		backgroundImage: `url(${Background})`,
-	};
-	
-	let imagesGif = require("../../common/images.gif");  //exemple
-	
-	const[editImg, setImg] = useState(data.Avatar);
-	const[name, setname] = useState(data.name);
-	
-	const onImageChange = (e:any) => {
-		const [file] = e.target.files;
-		setImg(URL.createObjectURL(file));
-	};
-			//**blob to dataURL**
+
+	const [isLogin, setIsLogin] = useContext(MyContext)
+	const navigate = useNavigate()
 	
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
-		const newimg =  newdata.get('imgtest');
+		// const newimg =  newdata.get('avatar');
 		const newname =  newdata.get('name');
 	
-		console.log('here:', newdata.get('imgtest'));
+		// console.log('here:', newdata.get('avatar'));
 		console.log('here2:', newdata.get('name'));
 	
-		// const dataToPost = user;
-		// dataToPost['name'] = data.get('name');
-		PutData("/api/user/id", newdata);
-		//put 更新数据 par name
-	
-		// const imgDataUrl = readAsDataURL(newimg)
+		// PutData("/api/user/id", newdata);
+
+		const res = PutData("/api/user/update", {name: newname});
+
+		const handleChange = (newname: any) => {
+			setIsLogin((prev:any) => {
+				if (newname)
+					prev.name = newname
+				return prev
+			});
+		};
+
+		if (res != null) {
+			handleChange(newname)
+			navigate('/profile')
+		}
+		else alert('Update fail')
 	};
-	
-	
-	//**blob to dataURL**
-	// function blobToDataURL(blob:any, callback:any) {
-	// 	var a = new FileReader();
-	// 	a.onload = (e) => {
-	// 		callback(e.target.result);
-	// 	}
-	// 	a.readAsDataURL(blob);
-	// }
-	
+
+
 	return (
 		<div className="image" style={img}>
 		 	<ResponsiveAppBar />
@@ -73,30 +65,17 @@ export const EditPage = () => {                  //修改页面
 					boxShadow: 1,
 					fontWeight: "bold",
 				}}>
-				<Box component="form" noValidate onSubmit={handleSubmit}  >
-					<Box>
-					<img src={editImg} height='200' width='200' alt="The photo from user."/>
-	
+				<Box component="form" noValidate onSubmit={handleSubmit}>
+					<img 
+						 src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}
+						 height='200' width='200' alt="The photo from user."/>
+
 					<input
-						className='cImg'
-						onChange={onImageChange}
-						type='file'
-						name='imgtest'
-						id='imgtest'
+						type="file"
+						name='avatar'
+						id='avatar'
 						accept='image/jpeg'
 					/>
-					</Box>
-					{/* <IconButton color="primary" aria-label="upload picture" component="label">
-						<Box
-							onChange={onImageChange}
-							component="img"
-							sx={{ height: 200, width: 200 }}
-							alt="The photo from user."
-							src={editImg}
-						/>
-						<input hidden accept="image/*" type="file" />
-						<PhotoCamera />
-					</IconButton> */}
 	
 					<TextField className='newName'
 						required
@@ -121,7 +100,6 @@ const Edit = () => {
 	const handleSettings = () => {
 		navigate("/profile/edit");
 	}
-
 
 	return (
 		<div>

@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../../common/common.css";
 import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit";
-import { GetData } from "../../../global/constants";
+import { MyContext } from "../../common/route";
 
 
 /*avatar: ""
@@ -18,9 +18,8 @@ online: 1
 
 const ProfileBox = () => {
 
-  const data:any = GetData("/api/user/id");
-  console.log(data);
-
+  const [isLogin, setIsLogin] = useContext(MyContext)
+  
   return (
     <Box
       className="profil"
@@ -38,7 +37,7 @@ const ProfileBox = () => {
         component="img"
         sx={{ height: 250, width: 250 }}
         alt="The photo from user."
-        src={data.fortyTwoAvatar}
+        src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}
       />
       <Box
         sx={{
@@ -50,36 +49,37 @@ const ProfileBox = () => {
         }}
       >
         <Box component="span" sx={{ fontSize: 23, mt: 2 }}>
-          user: {data.login}
+          user: {isLogin.name}
         </Box>
         
         <Box component="span" sx={{ fontSize: 20, mt: 2 }}>
-          Email: {data.email}
+          Email: {isLogin.email}
         </Box>
   
         <Box
           component="span"
           sx={{ mt: 3, color: "primary.main", fontSize: 20 }}
         >
-          WINS: {data.wins}
+          WINS: {isLogin.wins}
         </Box>
         <Box
           component="span"
           sx={{ mt: 2, color: "warning.main", fontSize: 20 }}
         >
-          LOSES: {data.loses}
+          LOSES: {isLogin.loses}
         </Box>
   
         <Box
           component="span"
           sx={{ mt: 2, color: "success.main", fontSize: 20 }}
         >
-          score: {data.score}
+          score: {isLogin.score}
         </Box>
-  
-        <Button key="edit" sx= {{ mt: 2}}>
+      
+        <Button key="edit" sx= {{ mt: 2}} />
           <BasicPopover />
-        </Button>
+       
+       
   
       </Box>
     </Box>

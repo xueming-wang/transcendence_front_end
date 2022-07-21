@@ -101,24 +101,30 @@ export class UserController {
   @Put('update')
   @UseGuards(UserGuard)
   async updateUserById(
-    @Body() user: UserDto,
+    @Req() req: any,
+    @Body() data: any,
     @Res() res: Response,
   ): Promise<UserDto> {
-    if (user.name && !(await this.userService.nameFormatVerify(user.name))) {
+    const u = await this.userService.getUserById(req.session.userId)
+    
+    if (data.name && !(await this.userService.nameFormatVerify(data.name))) {
       res.status(403).send('Username formatting is incorrect');
       return;
     }
-    if (user.name) {
-      const tmp = await this.userService.getUserByName(user.name);
+    if (data.name) {
+      const tmp = await this.userService.getUserByName(data.name);
       if (tmp) {
-        if (user.id != tmp.id) {
+        if (u.id != tmp.id) {
           res.status(403).send('Username is already being used\n');
           return;
         }
       }
+      u.name = data.name
     }
-    res.status(200).send();
-    return this.userService.updateUser(user);
+
+    // put here upload image logic ... and update u.avatar
+
+    res.status(200).json(await this.userService.updateUser(u))
   }
 
   /*

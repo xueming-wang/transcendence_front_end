@@ -14,9 +14,7 @@ let img = {
 
 const Profile = () => {
 
-  // const data:any = GetData();
-  // console.log(data);
-  
+
 //   const [win, setWin] = useState(0);  //win 数量
 //   // const WinPlus = () => {
 //   // 	setWin((prev) => {

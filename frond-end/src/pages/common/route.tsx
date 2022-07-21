@@ -49,7 +49,7 @@ const App = () => {
     const resp = await GetData("/api/user/isLogin");
     if (resp) {
       const user = await GetData("/api/user/id");
-      console.log(user);
+      // console.log(user);
       setter(user)
     }
   }

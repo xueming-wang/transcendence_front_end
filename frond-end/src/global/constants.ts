@@ -38,16 +38,17 @@ export const PutData = async(url: string, data: any) => {
 
 	try {
 		const response = await fetch(url, {
-		method: "PUT",
-		headers: {
-		  'Content-type': 'application/json',
-		},
-		body: JSON.stringify({data})
+			method: "PUT",
+			headers: {
+			'Content-type': 'application/json',
+			},
+			body: JSON.stringify(data)
 		})
-    // if (response.ok) {
-    //   const jsonResponse = await response.json();
-    //   // Code to execute with jsonResponse
-    // }
+		if (response.status == 200) {
+			return  await response.json();
+		// Code to execute with jsonResponse
+		}
+		else return null
 	} catch(err) {
 	  console.log(err);
 	}
