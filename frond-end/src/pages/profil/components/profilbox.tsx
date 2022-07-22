@@ -79,8 +79,6 @@ const ProfileBox = () => {
         <Button key="edit" sx= {{ mt: 2}} />
           <BasicPopover />
        
-       
-  
       </Box>
     </Box>
   );

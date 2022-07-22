@@ -32,9 +32,10 @@ const Chat = () => {
         {
           u.map((item: any) => {
             console.log(item);  //users
-            return (
+            return (   
               <li key={item.id}>
-                <span>{item.login}</span> 
+                {/*  <span>{item.name}</span>  this is username*/}  
+                <span>{item.name}</span>   
               </li>
             )
           })
