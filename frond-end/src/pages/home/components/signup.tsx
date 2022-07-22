@@ -10,16 +10,37 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
+import { PutData } from '../../../global/constants';
+import { MyContext } from '../../common/route';
 
 const theme = createTheme();
 
 export default function SignUp() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [isLogin, setIsLogin] = React.useContext(MyContext)
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-  };
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+
+      const username = data.get('username')
+      
+      console.log('u:', username)
+
+      const resp = await PutData('/api/user/create', {name: username})
+
+      console.log('res:', resp);
+      if (resp) {
+        setIsLogin((prev: any) => {
+          prev['name'] = username;
+          return prev
+        })
+        navigate('/profile')
+      }
+      else {
+        alert('Create username failed')
+      }
+    };
 
   return (
     <ThemeProvider theme={theme}>
@@ -40,10 +61,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="pseudo"
-                  label="name"
-                  name="pseudo"
-                  autoComplete="pseudo"
+                  id="username"
+                  label="username"
+                  name="username"
+                  autoComplete="username"
                 />
               </Grid>
             </Grid>

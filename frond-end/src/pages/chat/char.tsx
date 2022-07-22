@@ -1,13 +1,17 @@
 import { ResponsiveAppBar } from "../home/components/appBar";
 import Background from "../common/pp2.gif";
 import { GetData } from "../../global/constants";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MyContext } from "../common/route";
+import { useNavigate } from "react-router";
 
 let img = {
   backgroundImage: `url(${Background})`,
 };
 
 const Chat = () => {
+  const [isLogin] = useContext(MyContext)
+  const navigate = useNavigate()
 
   async function getAllUser(setter: Function) {
     const u = await GetData("/api/user/")
@@ -21,6 +25,8 @@ const Chat = () => {
   const [u, setU] = useState([])
 
   useEffect(() => {
+    if (!isLogin.name)
+      navigate('/signup')
     getAllUser(setU).then()
   }, [])
 

@@ -8,8 +8,6 @@ import SignUp from "../home/components/signup";
 import React, { useContext, useEffect, useState } from "react";
 import { EditPage } from "../profil/components/edit";
 import { GetData } from "../../global/constants";
-import { useNavigate } from "react-router-dom";
-
 
 ////创建context
 export const MyContext = React.createContext<any>(null);
@@ -19,29 +17,30 @@ const RouteStat = () => {
 
   if (isLogin) {
     return (
-      <Routes>
-        <Route path="/" element={<Profile />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/edit" element={<EditPage />} />
-        <Route path="/jeu" element={<Jeu />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Profile />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/edit" element={<EditPage />} />
+          <Route path="/jeu" element={<Jeu />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="*" element={<Profile />} />
+        </Routes>
+      </BrowserRouter>
     );
   } else {
     return (
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 };
-
-
-
 
 const App = () => {
 
@@ -61,19 +60,11 @@ const App = () => {
     checkIsLogin(setIsLogin).then()
   }, []);
 
-  // const navigate = useNavigate();
-  // const user: any = isLogin
-  // console.log(user.name)
-  // if (user && !user.name) {
-  //   navigate("/signup")
-  // }
 
   return (
     <div>
       <MyContext.Provider value={[isLogin, setIsLogin]}>
-        <BrowserRouter>
           <RouteStat />
-        </BrowserRouter>
       </MyContext.Provider>
     </div>
   );

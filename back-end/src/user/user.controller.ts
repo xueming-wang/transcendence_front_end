@@ -84,7 +84,8 @@ export class UserController {
         user,
         name.name,
       );
-      if (!newUser) res.status(201).json({});
+
+      if (!newUser) res.status(201).json(null);
       else res.status(201).json(newUser);
     } else
       res.status(403).json({

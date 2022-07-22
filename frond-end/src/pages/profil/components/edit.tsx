@@ -19,6 +19,10 @@ export const EditPage = () => {                  //修改页面
 
 	const [isLogin, setIsLogin] = useContext(MyContext)
 	const navigate = useNavigate()
+  
+	React.useEffect(() => {
+	  if (!isLogin.name) navigate('/signup')
+	}, [])
 	
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -54,10 +58,9 @@ export const EditPage = () => {                  //修改页面
 	
 		var isletter = /^[a-zA-Z]{6,16}$/.test(newname);
 		if (isletter === false) {
-			alert('username must be a lettre and long 6~16')
+			alert('username must be a lettre and long is 6~16')
 			return 0;
 		}
-
 	}
 
 	return (
@@ -91,7 +94,6 @@ export const EditPage = () => {                  //修改页面
 						id="name"
 						label="enter your New Name"
 						name="name"
-						
 					/>
 	
 				   <Button  type="submit" className='editvalide' >valide</Button>

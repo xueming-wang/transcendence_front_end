@@ -1,6 +1,9 @@
 import { ResponsiveAppBar } from "../home/components/appBar";
 import ProfileBox from "./components/profilbox";
 import Background from "../common/pp2.gif";
+import { useContext, useEffect } from "react";
+import { MyContext } from "../common/route";
+import { useNavigate } from "react-router";
 
 
 let img = {
@@ -8,6 +11,12 @@ let img = {
 };
 
 const Profile = () => {
+  const [isLogin] = useContext(MyContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isLogin.name) navigate('/signup')
+  }, [])
 
   return (
     <div className="image" style={img}>
