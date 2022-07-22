@@ -26,9 +26,10 @@ export const EditPage = () => {                  //修改页面
 		// const newimg =  newdata.get('avatar');
 		const newname =  newdata.get('name');
 		console.log('here2:', newdata.get('name'));
+		
 
-		if (checkName(newname) === 0) {
-			return ;
+		if(newname !== '' && checkName(newname) === 0 ) {
+				return ;
 		}
 		// PutData("/api/user/id", newdata);
 		const res = PutData("/api/user/update", {name: newname});
@@ -51,7 +52,7 @@ export const EditPage = () => {                  //修改页面
 	const checkName = (newname:any) => {
 		let i = newname.length;
 		if(i < 6 || i > 16){
-			alert('username long must be 5~15')
+			alert('username long must be 6~16')
 			return 0;
 		}
 		var isletter = /^[a-zA-Z]+$/.test(newname);
@@ -93,7 +94,7 @@ export const EditPage = () => {                  //修改页面
 						id="name"
 						label="enter your New Name"
 						name="name"
-						autoComplete="name"
+						
 					/>
 	
 				   <Button  type="submit" className='editvalide' >valide</Button>
