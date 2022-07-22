@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 let img = {
   backgroundImage: `url(${Background})`,
 };
-// implements
 
 const Chat = () => {
+
   async function getAllUser(setter: Function) {
     const u = await GetData("/api/user/")
      setter((prev: any) => {
@@ -17,11 +17,13 @@ const Chat = () => {
      })
   }
 
+
   const [u, setU] = useState([])
 
   useEffect(() => {
     getAllUser(setU).then()
   }, [])
+
 
   return (
     <div className="image" style={img}>
@@ -29,9 +31,10 @@ const Chat = () => {
       <ul>
         {
           u.map((item: any) => {
+            console.log(item);  //users
             return (
               <li key={item.id}>
-                <span>{item.name}</span>
+                <span>{item.login}</span> 
               </li>
             )
           })

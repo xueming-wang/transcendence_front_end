@@ -51,13 +51,10 @@ export const EditPage = () => {                  //修改页面
 
 	const checkName = (newname:any) => {
 		let i = newname.length;
-		if(i < 6 || i > 16){
-			alert('username long must be 6~16')
-			return 0;
-		}
-		var isletter = /^[a-zA-Z]+$/.test(newname);
+	
+		var isletter = /^[a-zA-Z]{6,16}$/.test(newname);
 		if (isletter === false) {
-			alert('username must be a lettre')
+			alert('username must be a lettre and long 6~16')
 			return 0;
 		}
 
