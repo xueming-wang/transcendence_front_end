@@ -15,7 +15,13 @@ const Profile = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isLogin.name) navigate('/signup')
+    if (!isLogin.name) {
+      navigate('/signup')
+      return
+    }
+    if (isLogin.twofa) {
+      if (!isLogin.tfactive) navigate('/twofa')
+    }
   }, [])
 
   return (

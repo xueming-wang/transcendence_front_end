@@ -8,7 +8,7 @@ import Fab from '@mui/material/Fab';
 import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
 import { PutData } from '../../../global/constants';
-import { useContext } from 'react';
+import { useContext , useState} from 'react';
 import { MyContext } from '../../common/route';
 
 let img = {
@@ -18,22 +18,32 @@ let img = {
 export const EditPage = () => {                  //修改页面
 
 	const [isLogin, setIsLogin] = useContext(MyContext)
+	const [avatar, setAvatar] = useState(isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar)
+
 	const navigate = useNavigate()
   
 	React.useEffect(() => {
-	  if (!isLogin.name) navigate('/signup')
-	}, [])
+		if (!isLogin.name) {
+		  navigate('/signup')
+		  return
+		}
+		if (isLogin.twofa) {
+		  if (!isLogin.tfactive) navigate('/twofa')
+		}
+	  }, [])
 	
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const newdata = new FormData(event.currentTarget);
-		// const newimg =  newdata.get('avatar');
+
+		const newimg =  newdata.get('avatar');
 		const newname =  newdata.get('name');
 		console.log('here2:', newdata.get('name'));
+		console.log('here:', newdata.get('avatar'));
 		
 
 		if(newname !== '' && checkName(newname) === 0 ) {
-				return ;
+			return ;
 		}
 		// PutData("/api/user/id", newdata);
 		const res = PutData("/api/user/update", {name: newname});
@@ -63,6 +73,14 @@ export const EditPage = () => {                  //修改页面
 		}
 	}
 
+
+	const handleImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files != null) {
+			const file = e.target.files[0];
+			setAvatar(URL.createObjectURL(file));
+		}
+	}
+
 	return (
 		<div className="image" style={img}>
 		 	<ResponsiveAppBar />
@@ -78,11 +96,10 @@ export const EditPage = () => {                  //修改页面
 					fontWeight: "bold",
 				}}>
 				<Box component="form" noValidate onSubmit={handleSubmit}>
-					<img 
-						 src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}
+					<img src={avatar}
 						 height='200' width='200' alt="The photo from user."/>
-
 					<input
+						onChange={handleImg}
 						type="file"
 						name='avatar'
 						id='avatar'

@@ -8,6 +8,7 @@ import SignUp from "../home/components/signup";
 import React, { useContext, useEffect, useState } from "react";
 import { EditPage } from "../profil/components/edit";
 import { GetData } from "../../global/constants";
+import TwoFa from "../home/components/twofa";
 
 ////创建context
 export const MyContext = React.createContext<any>(null);
@@ -21,6 +22,7 @@ const RouteStat = () => {
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/twofa" element={<TwoFa />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditPage />} />
           <Route path="/jeu" element={<Jeu />} />
@@ -48,7 +50,8 @@ const App = () => {
     const resp = await GetData("/api/user/isLogin");
     if (resp) {
       const user = await GetData("/api/user/id");
-      // console.log(user);
+      user['twofa'] = true // test for twofa, delete when have api
+      user['tfauth'] = false // test for twofa, delete when have api
       setter(user)
     }
   }

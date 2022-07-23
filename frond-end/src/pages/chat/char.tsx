@@ -25,8 +25,13 @@ const Chat = () => {
   const [u, setU] = useState([])
 
   useEffect(() => {
-    if (!isLogin.name)
+    if (!isLogin.name) {
       navigate('/signup')
+      return
+    }
+    if (isLogin.twofa) {
+      if (!isLogin.tfactive) navigate('/twofa')
+    }
     getAllUser(setU).then()
   }, [])
 

@@ -19,17 +19,17 @@ export default function SignUp() {
     const navigate = useNavigate()
     const [isLogin, setIsLogin] = React.useContext(MyContext)
 
+    if (isLogin.name) {
+      navigate('/profile')
+    }
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
 
       const username = data.get('username')
-      
-      console.log('u:', username)
 
       const resp = await PutData('/api/user/create', {name: username})
-
-      console.log('res:', resp);
       if (resp) {
         setIsLogin((prev: any) => {
           prev['name'] = username;
@@ -38,7 +38,7 @@ export default function SignUp() {
         navigate('/profile')
       }
       else {
-        alert('Create username failed')
+        alert('username failed')
       }
     };
 
