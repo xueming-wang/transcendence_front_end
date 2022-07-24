@@ -4,6 +4,7 @@ import "../../common/common.css";
 import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit";
 import { MyContext } from "../../common/route";
+import { margin } from "@mui/system";
 
 const ProfileBox = () => {
 
@@ -13,11 +14,15 @@ const ProfileBox = () => {
  
   const clickActive = () => {
     const newState = active == 'two-factor OFF' ? 'two-factor ON' : 'two-factor OFF';
-    if (newState === 'two-factor ON') {
-      
-        <img src={isLogin.fortyTwoAvatar} alt="factor from google"/>
-    }
     setActive(newState);
+  }
+
+  const ShowQR = () => {
+    
+    if (active ==='two-factor OFF') {
+      return <img height='100' width='100' src="" alt="aaaaa" />  //two fa
+    }
+    return null
   }
 
   return (
@@ -25,19 +30,18 @@ const ProfileBox = () => {
       className="profil"
       sx={{
          display: "flex",
-         flexDirection: { xs: "column", md: "row"},
+         flexDirection:  "row",
          alignItems: "self-start",
          overflow: 'hidden',
          borderRadius: "20px",
          boxShadow: 1,
          fontWeight: "bold",
-      }}
-    >
-     
+      }} >
+    
       <img  height='250' width='250' className="profilimg"
         alt="The photo from user."
-        src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}
-      />
+        src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}/>
+
       <Box
         sx={{
           display: "flex",
@@ -60,33 +64,34 @@ const ProfileBox = () => {
   
         <Box
           component="span"
-          sx={{ mt: 4, color: "primary.main", fontSize: 25 }}>
+          sx={{ mt: 3, color: "primary.main", fontSize: 25 }}>
           WINS: {isLogin.wins}
         </Box>
 
         <Box
           component="span"
-          sx={{ mt: 4, color: "warning.main", fontSize: 25 }}>
+          sx={{ mt: 3, color: "warning.main", fontSize: 25 }}>
           LOSES: {isLogin.loses}
         </Box>
   
         <Box
           component="span"
-          sx={{ mt: 4, color: "success.main", fontSize:25 }}>
+          sx={{ mt: 3, color: "success.main", fontSize:25 }}>
           SCORE: {isLogin.score}  
-        </Box>
-
-        <Box 
-          sx={{ mt: 4}}>
-          <Button variant="outlined" onClick={clickActive}>{active}</Button>
         </Box>
 
         <Button className="edit">
           <BasicPopover  />
             <b  className="buttonedit">Edit profile</b>
         </Button>
+
+       
+        <Button  variant="outlined"  onClick={clickActive}>{active}</Button>
+        <div  className="twofa">
+            <ShowQR />
+        </div>
+
       </Box>
-     
     </Box>
   );
 };

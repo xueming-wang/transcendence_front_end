@@ -96,7 +96,7 @@ export const EditPage = () => {                  //修改页面
 					fontWeight: "bold",
 				 }} >
 
-				<Box component="form" noValidate onSubmit={handleSubmit}>
+				<Box component="form"  noValidate  onSubmit={handleSubmit}>
 				
 					<img src={avatar}
 							height='250' width='250' className="editimg"

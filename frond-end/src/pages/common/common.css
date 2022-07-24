@@ -143,9 +143,9 @@
 }
 
 .newName {
-  position:fixed;
+  position: relative;
   top: 60%;
-  right: 150px;
+  right: 22%;
   height: 20px;
   width: 300px;
 }
@@ -171,12 +171,12 @@
 
 /*for edit */
 .buttonedit {
-  margin: 20px;
+  margin: 10px;
 }
 
 .edit {
-  top: 8px;
-  left: 200px;
+  top: 20%;
+  left: 75%;
 }
 
 .upload {
@@ -184,3 +184,10 @@
   top: 85px;
   left: 200px;
 }
+
+.twofa {
+  position:relative;
+  top:  44%;
+  right: 50%;
+}
+
