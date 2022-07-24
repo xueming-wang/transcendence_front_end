@@ -95,18 +95,23 @@ export const EditPage = () => {                  //修改页面
 					boxShadow: 1,
 					fontWeight: "bold",
 				 }} >
+
 				<Box component="form" noValidate onSubmit={handleSubmit}>
+				
 					<img src={avatar}
-						 height='250' width='250' className="profilimg"
-						 alt="The photo from user."/>
-					<input
-						className='profilimg'
-						onChange={handleImg}
-						type="file"
-						name='avatar'
-						id='avatar'
-						accept='image/jpeg'
-					/>
+							height='250' width='250' className="editimg"
+							alt="The photo from user."/>
+					<Button className='upload' color="secondary" variant="outlined" component="label">
+						Upload
+						<input 
+							hidden   //隐藏
+							onChange={handleImg}
+							type="file"
+							name='avatar'
+							id='avatar'
+							accept='image/jpeg'
+						/>
+					</Button>
 
 					<TextField className='newName'
 							required
@@ -114,7 +119,7 @@ export const EditPage = () => {                  //修改页面
 							label="enter your New Name"
 							name="name"
 					/>
-					<Button  type="submit" className='editvalide' >valide</Button>
+					<Button  variant="contained" color="success" type="submit" className='editvalide' >valide</Button>
 				</Box>
 			</Box>
 		</div>

@@ -65,7 +65,7 @@
 
 .editvalide {
   top: 200px;
-  left: 500px;
+  right: 100px;
   
 }
 
@@ -145,9 +145,9 @@
 .newName {
   position:fixed;
   top: 60%;
-  right: 480px;
-  /* height: 20px;
-  width: 200px; */
+  right: 150px;
+  height: 20px;
+  width: 300px;
 }
 
 .avatar {
@@ -163,12 +163,24 @@
   left: 10px;
 } 
 
+.editimg {
+  position: relative;
+  top: 100px;
+  left: 200px;
+} 
+
 /*for edit */
 .buttonedit {
   margin: 20px;
 }
 
 .edit {
-  top: 100px;
+  top: 8px;
+  left: 200px;
+}
+
+.upload {
+  position:fixed;
+  top: 85px;
   left: 200px;
 }

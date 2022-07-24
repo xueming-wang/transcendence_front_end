@@ -5,13 +5,19 @@ import Button from '@mui/material/Button';
 import BasicPopover from "../components/edit";
 import { MyContext } from "../../common/route";
 
-
 const ProfileBox = () => {
 
   const [isLogin, setIsLogin] = useContext(MyContext)
-  
-  const TwofaActive = () => {
+  const [active, setActive] = useState('two-factor OFF')
 
+ 
+  const clickActive = () => {
+    const newState = active == 'two-factor OFF' ? 'two-factor ON' : 'two-factor OFF';
+    if (newState === 'two-factor ON') {
+      
+        <img src={isLogin.fortyTwoAvatar} alt="factor from google"/>
+    }
+    setActive(newState);
   }
 
   return (
@@ -32,7 +38,6 @@ const ProfileBox = () => {
         alt="The photo from user."
         src={isLogin.avatar ? isLogin.avator: isLogin.fortyTwoAvatar}
       />
-    
       <Box
         sx={{
           display: "flex",
@@ -70,7 +75,12 @@ const ProfileBox = () => {
           sx={{ mt: 4, color: "success.main", fontSize:25 }}>
           SCORE: {isLogin.score}  
         </Box>
-        
+
+        <Box 
+          sx={{ mt: 4}}>
+          <Button variant="outlined" onClick={clickActive}>{active}</Button>
+        </Box>
+
         <Button className="edit">
           <BasicPopover  />
             <b  className="buttonedit">Edit profile</b>
