@@ -64,10 +64,15 @@
 }
 
 .editvalide {
-  top: 10px;
-  left: 100px;
+  top: 200px;
+  left: 500px;
   
 }
+
+.baravatar {
+  left: 400px;
+}
+
 /*css for signup*/
 .signup {
   height: 40px;
@@ -79,8 +84,8 @@
   color: rgb(25, 24, 24);
   transform: translateX(50%);
   transform: translateY(300);
-  height: 450px;
-  width: 50%;
+  height: 600px;
+  width: 55%;
 }
 
 .image {
@@ -138,8 +143,11 @@
 }
 
 .newName {
-  height: 50px;
-  width: 300px;
+  position:fixed;
+  top: 60%;
+  right: 480px;
+  /* height: 20px;
+  width: 200px; */
 }
 
 .avatar {
@@ -147,4 +155,20 @@
   top: 280px;
   left: 200px;
   opacity: 1;
+}
+
+.profilimg {
+  position: relative;
+  top: 100px;
+  left: 10px;
+} 
+
+/*for edit */
+.buttonedit {
+  margin: 20px;
+}
+
+.edit {
+  top: 100px;
+  left: 200px;
 }

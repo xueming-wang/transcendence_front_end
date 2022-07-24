@@ -14,8 +14,11 @@ import { MyContext } from "../../common/route";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import {PostData} from "../../../global/constants";
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 
 const pages = ["Home", "profile", "jeu", "chat", "logout"];
+
 
 const HomeIcon = (props: any) => {
   return (
@@ -59,6 +62,12 @@ export const CommonBox = () => {
         <Button key="logout" className="log-out" onClick={logout}>
           <LogoutIcon fontSize="large" /> logout
         </Button>
+
+        <Avatar className="baravatar" alt="Remy Sharp"  
+                sx={{ width: 50, height: 50 }}
+                src={isLogin.avatar? isLogin.avatar: isLogin.fortyTwoAvatar} >
+        </Avatar>
+    
       </Box>
     );
   } else {

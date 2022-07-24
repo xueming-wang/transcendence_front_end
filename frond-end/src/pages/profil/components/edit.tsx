@@ -88,32 +88,33 @@ export const EditPage = () => {                  //修改页面
 				className="profil"
 				sx={{
 					display: "flex",
-					flexDirection: { xs: "column", md: "row" },
-					alignItems: "center",
+					flexDirection: "row",
+					// alignItems: "self-start",
 					overflow: 'hidden',
 					borderRadius: "20px",
 					boxShadow: 1,
 					fontWeight: "bold",
-				}}>
+				 }} >
 				<Box component="form" noValidate onSubmit={handleSubmit}>
 					<img src={avatar}
-						 height='200' width='200' alt="The photo from user."/>
+						 height='250' width='250' className="profilimg"
+						 alt="The photo from user."/>
 					<input
+						className='profilimg'
 						onChange={handleImg}
 						type="file"
 						name='avatar'
 						id='avatar'
 						accept='image/jpeg'
 					/>
-	
+
 					<TextField className='newName'
-						required
-						id="name"
-						label="enter your New Name"
-						name="name"
+							required
+							id="name"
+							label="enter your New Name"
+							name="name"
 					/>
-	
-				   <Button  type="submit" className='editvalide' >valide</Button>
+					<Button  type="submit" className='editvalide' >valide</Button>
 				</Box>
 			</Box>
 		</div>
